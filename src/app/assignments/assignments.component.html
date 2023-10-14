@@ -1,1 +1,79 @@
-<p>assignments works!</p>
+<!--
+<p>Titre : {{titre}}</p>
+<p *ngFor="let assigment of assignments">
+    Devoir intitulé {{assigment.nom}}, à rendre pour le : {{assigment.dateDeRendu | date}},
+    rendu par l'étudiant : {{assigment.rendu}}
+</p>
+/* exemple des ngFor et ngIF */
+/* exemple de ngFor et ngIf avec des classes */-->
+<!--[ngStyle]="{'color': assigment.rendu ? 'green' : 'red'}"-->  <!--/* exemple de ngStyle */ -->
+
+<!--
+<div *ngFor="let assigment of assignments"
+     [ngClass]="{'rendu':assigment.rendu, 'nonRendu': !assigment.rendu}">
+  <p appRendu *ngIf="assigment.rendu == true;else nonRendu">
+    Devoir intitulé {{assigment.nom}}, à été rendu le : {{assigment.dateDeRendu | date}}
+  </p>
+  <ng-template #nonRendu>
+    <p>
+      Le Devoir intitulé {{assigment.nom}} n'a pas été rendu.
+    </p>
+    </ng-template>
+</div>
+-->
+
+
+
+<app-add-assignment></app-add-assignment> <!--/* exemple de component */-->
+
+<!--/* exemple de formulaire */ -->
+
+<form ngForm (submit)="onSubmit();assignmentForm.reset()"
+      #assignmentForm class="form">
+  <!--/* on ajoute un field pour mettre le nom du devoir */ -->
+  <mat-form-field>
+    <input matInput [(ngModel)]="nomDevoir" name="nom" placeholder="Nom du devoir" required>
+  </mat-form-field>
+
+  <!--/* on ajoute un button pour la date de rendu */-->
+  <mat-form-field appearance="fill">
+    <input matInput [matDatepicker]="picker"
+           placeholder="Date de rendu"
+           [(ngModel)]="dateRendu"
+           name="dateDeRendu" required>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <!--/* on ajoute un button pour ajouter le devoir */-->
+  <button mat-stroked-button
+          color="primary"
+          [disabled]="!ajoutActive"
+          (click)="onSubmit()"
+  >
+    Ajouter un devoir
+  </button>
+</form>
+
+
+/* exemple avec des liste*/
+<mat-list *ngFor="let assigment of assignments"
+    [ngClass]="{'rendu':assigment.rendu, 'nonRendu': !assigment.rendu}">
+  <!--
+  <h3 mat-subheader>
+    Devoir intitulé {{assigment.nom}}, à rendre pour le : {{assigment.dateDeRendu | date}},
+    rendu par l'étudiant : {{assigment.rendu}}</h3>-->
+
+  <mat-list-item (click)="assignmentClique(assigment)">
+    <p appRendu *ngIf="assigment.rendu;else nonRendu">
+      Devoir intitulé {{assigment.nom}}, à été rendu le : {{assigment.dateDeRendu | date}}</p>
+  <ng-template #nonRendu>
+    <p>
+      Le Devoir intitulé {{assigment.nom}} n'a pas été rendu.
+    </p>
+  </ng-template>
+    </mat-list-item>
+</mat-list>
+
+<app-assignment-detail [assignmentTransmis]="assignementSelectionne"></app-assignment-detail>
+

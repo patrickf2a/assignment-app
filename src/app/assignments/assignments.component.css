@@ -1,0 +1,33 @@
+
+
+.rendu{
+    color: green;
+    border: 1px solid green;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    width: 500px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.nonRendu{
+    color: red;
+    border: 1px solid red;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    width: 500px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.form {
+  display:flex;
+  flex-direction: column;
+  margin:5px;
+}

@@ -1,0 +1,19 @@
+.tittle-toolbar {
+  background-color: #555555;
+}
+
+.title-center {
+  margin: 0 auto;
+  color: white;
+}
+
+mat-sidenav-container{
+  height:100vh;
+}
+
+mat-sidenav{
+  width: 300px;
+  text-align: center;
+  background-color: #eee;
+}
+
