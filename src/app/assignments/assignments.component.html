@@ -22,10 +22,6 @@
 </div>
 -->
 
-
-
-<app-add-assignment></app-add-assignment> <!--/* exemple de component */-->
-
 <!--/* exemple de formulaire */ -->
 
 <form ngForm (submit)="onSubmit();assignmentForm.reset()"
@@ -56,7 +52,7 @@
 </form>
 
 
-/* exemple avec des liste*/
+<!--/* exemple avec des liste*/-->
 <mat-list *ngFor="let assigment of assignments"
     [ngClass]="{'rendu':assigment.rendu, 'nonRendu': !assigment.rendu}">
   <!--
