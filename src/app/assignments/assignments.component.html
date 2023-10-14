@@ -1,27 +1,3 @@
-<!--
-<p>Titre : {{titre}}</p>
-<p *ngFor="let assigment of assignments">
-    Devoir intitulé {{assigment.nom}}, à rendre pour le : {{assigment.dateDeRendu | date}},
-    rendu par l'étudiant : {{assigment.rendu}}
-</p>
-/* exemple des ngFor et ngIF */
-/* exemple de ngFor et ngIf avec des classes */-->
-<!--[ngStyle]="{'color': assigment.rendu ? 'green' : 'red'}"-->  <!--/* exemple de ngStyle */ -->
-
-<!--
-<div *ngFor="let assigment of assignments"
-     [ngClass]="{'rendu':assigment.rendu, 'nonRendu': !assigment.rendu}">
-  <p appRendu *ngIf="assigment.rendu == true;else nonRendu">
-    Devoir intitulé {{assigment.nom}}, à été rendu le : {{assigment.dateDeRendu | date}}
-  </p>
-  <ng-template #nonRendu>
-    <p>
-      Le Devoir intitulé {{assigment.nom}} n'a pas été rendu.
-    </p>
-    </ng-template>
-</div>
--->
-
 <!--/* exemple de formulaire */ -->
 
 <form ngForm (submit)="onSubmit();assignmentForm.reset()"
