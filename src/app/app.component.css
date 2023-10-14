@@ -6,6 +6,10 @@
   margin: 0 auto;
   color: white;
 }
+mat-toolbar-row {
+  justify-content: center;
+  color: white;
+}
 
 mat-sidenav-container{
   height:100vh;
@@ -16,4 +20,16 @@ mat-sidenav{
   text-align: center;
   background-color: #eee;
 }
+a mat-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 27px;
+}
 
+mat-icon {
+  margin-right: 10px;
+  align-self: center;
+  font-size: 24px;
+}
