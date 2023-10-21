@@ -9,23 +9,19 @@ import {Assignment} from './assignment.model';
 })
 export class AssignmentsComponent implements OnInit {
   titre = "Mon application sur les Assignments !";
-  ajoutActive=true;
-  //form
-  nomDevoir = "";
-  // date a la quel on le rend
-  dateRendu?:Date;
+  FormVisible=false;
 
   assignementSelectionne : Assignment | undefined;
 
   assignments : Assignment[] = [
-
+/*
     {
       nom:this.nomDevoir,
-      dateDeRendu: new Date("2023-03-17"),
+      dateDeRendu: new Date(),
       rendu: false
     },
 
-
+*/
     {
       nom: "TP2 sur Angular, un gestionnaire de devoirs",
       dateDeRendu: new Date("2023-12-17"),
@@ -38,6 +34,8 @@ export class AssignmentsComponent implements OnInit {
     },
 
     ]
+
+
   constructor(){
 
   }
@@ -45,22 +43,15 @@ export class AssignmentsComponent implements OnInit {
 
   }
 
-  onSubmit() {
-    if((!this.dateRendu) || (!this.nomDevoir)) return;
-
-    const newAssignment = new Assignment();
-    newAssignment.nom = this.nomDevoir;
-    newAssignment.dateDeRendu = this.dateRendu;
-    newAssignment.rendu = false;
-    //console.log(newAssignment);
-    this.assignments.push(newAssignment);
-
-    console.log(newAssignment);
-  }
-
   assignmentClique(assignment: Assignment){
     this.assignementSelectionne = assignment;
   }
-
+  onAddAssignmentBtnClick(){
+    this.FormVisible=true;
+  }
+  onNouvelAssignment(event: Assignment){
+    this.assignments.push(event);
+    this.FormVisible=false;// on veut voir la liste avec le nouvel assignment
+  }
 
 }

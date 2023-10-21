@@ -1,1 +1,29 @@
 <p>add-assignment works!</p>
+
+<!--/* exemple de formulaire */ -->
+
+<form ngForm (submit)="onSubmit();assignmentForm.reset()"
+      #assignmentForm class="form">
+  <!--/* on ajoute un field pour mettre le nom du devoir */ -->
+  <mat-form-field>
+    <input matInput [(ngModel)]="nomDevoir" name="nom" placeholder="Nom du devoir" required>
+  </mat-form-field>
+
+  <!--/* on ajoute un button pour la date de rendu */-->
+  <mat-form-field appearance="fill">
+    <input matInput [matDatepicker]="picker"
+           placeholder="Date de rendu"
+           [(ngModel)]="dateRendu"
+           name="dateDeRendu" required>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <!--/* on ajoute un button pour ajouter le devoir */-->
+  <button mat-stroked-button
+          color="primary"
+          (click)="onSubmit()"
+  >
+    Ajouter un devoir
+  </button>
+</form>
