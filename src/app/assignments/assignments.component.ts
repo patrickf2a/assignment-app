@@ -21,7 +21,7 @@ export class AssignmentsComponent implements OnInit {
       rendu: false
     },
 
-*/
+
     {
       nom: "TP2 sur Angular, un gestionnaire de devoirs",
       dateDeRendu: new Date("2023-12-17"),
@@ -32,7 +32,7 @@ export class AssignmentsComponent implements OnInit {
       dateDeRendu: new Date("2023-10-02"),
       rendu: true
     },
-
+*/
     ]
 
 
@@ -53,5 +53,13 @@ export class AssignmentsComponent implements OnInit {
     this.assignments.push(event);
     this.FormVisible=false;// on veut voir la liste avec le nouvel assignment
   }
+
+  OnAssignmentDelete(event : any){
+    this.assignments.forEach((item, index) => {
+      if(item === event) this.assignments.splice(index,1);
+    });
+    this.assignementSelectionne = undefined;
+  }
+
 
 }

@@ -20,7 +20,9 @@
     </mat-list-item>
 </mat-list>
 
-<app-assignment-detail [assignmentTransmis]="assignementSelectionne"></app-assignment-detail>
+<app-assignment-detail [assignmentTransmis]="assignementSelectionne"
+(deleteAssignment)="OnAssignmentDelete($event)"
+></app-assignment-detail>
 </main>
 
 <app-add-assignment *ngIf="FormVisible" (nouvelAssignment)="onNouvelAssignment($event)" ></app-add-assignment>
