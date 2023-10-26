@@ -25,7 +25,7 @@ import { FormsModule } from '@angular/forms';
 import { AssignmentDetailComponent } from './assignments/assignment-detail/assignment-detail.component';
 import { AddAssignmentComponent } from './assignments/add-assignment/add-assignment.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AssignmentService } from './shared/assignment.service';
+import { AssignmentsService } from './shared/assignments.service';
 
 
 
@@ -55,7 +55,7 @@ import { AssignmentService } from './shared/assignment.service';
     MatSidenavModule,
     AppRoutingModule,
   ],
-  providers: [AssignmentService],
+  providers: [AssignmentsService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -2,12 +2,16 @@
 
 <div class="container">
 <mat-card *ngIf="assignmentTransmis">
-  <mat-card-content>
+  <mat-card-content >
     <mat-card-title>{{assignmentTransmis.nom}}</mat-card-title>
     <mat-card-subtitle>{{assignmentTransmis.dateDeRendu | date: 'dd/MM/yyyy'}}</mat-card-subtitle>
-    <mat-checkbox *ngIf="!assignmentTransmis.rendu" (click)="OnAssignmentRendu()"> Devoir Rendu </mat-checkbox>
-    <mat-checkbox *ngIf="assignmentTransmis.rendu" (click)="supprimerAssignment()"> Supprimer Rendu </mat-checkbox>
 
+    <div id="bottom">
+
+    <mat-checkbox *ngIf="!assignmentTransmis.rendu" (click)="OnAssignmentRendu()"> Devoir Rendu </mat-checkbox>
+    <mat-checkbox *ngIf="assignmentTransmis.rendu" (click)="supprimerRenduAssignment()"> Supprimer Rendu </mat-checkbox>
+    <button  mat-flat-button color="warn"  (click)="DeleteElement()"> Supprimer </button>
+    </div>
   </mat-card-content>
 </mat-card>
 </div>

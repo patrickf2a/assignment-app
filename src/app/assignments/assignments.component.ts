@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Assignment} from './assignment.model';
+import {AssignmentsService} from '../shared/assignments.service';
 
 
 @Component({
@@ -13,33 +14,15 @@ export class AssignmentsComponent implements OnInit {
 
   assignementSelectionne : Assignment | undefined;
 
-  assignments : Assignment[] = [
-/*
-    {
-      nom:this.nomDevoir,
-      dateDeRendu: new Date(),
-      rendu: false
-    },
+  assignments: Assignment[]= [];
 
 
-    {
-      nom: "TP2 sur Angular, un gestionnaire de devoirs",
-      dateDeRendu: new Date("2023-12-17"),
-      rendu: false
-    },
-    {
-      nom: "TP3 sur Angular, utilisation du rooter et de web services",
-      dateDeRendu: new Date("2023-10-02"),
-      rendu: true
-    },
-*/
-    ]
-
-
-  constructor(){
-
+  constructor(private assignmentService: AssignmentsService){
   }
+
   ngOnInit(): void{
+    //this.assignments= this.assignmentService.getAssignments();
+    this.getAssignments();
 
   }
 
@@ -50,16 +33,22 @@ export class AssignmentsComponent implements OnInit {
     this.FormVisible=true;
   }
   onNouvelAssignment(event: Assignment){
-    this.assignments.push(event);
+    //this.assignments.push(event);
+    this.assignmentService.addAssignment(event).subscribe(message => console.log(message));
     this.FormVisible=false;// on veut voir la liste avec le nouvel assignment
   }
 
-  OnAssignmentDelete(event : any){
+  OnRenduAssignmentDelete(event : any){
+    // permetbde supprimer le rendu et non l'assignment
     this.assignments.forEach((item, index) => {
       if(item === event) this.assignments.splice(index,1);
     });
     this.assignementSelectionne = undefined;
   }
 
+  getAssignments(){
+    this.assignmentService.getAssignments()
+      .subscribe(assignments => this.assignments = assignments);
+  }
 
 }
