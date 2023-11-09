@@ -3,9 +3,10 @@
   <mat-toolbar-row>
     <!--<button mat-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>-->
     <button mat-button (click)="opened=!opened"><mat-icon>menu</mat-icon></button>
-    <span class="title-center">Gestionnaire de devoir</span>
+    <a class="title-center" routerLink="" >{{title}}</a>
     <button mat-button routerLink="/home"><mat-icon>home</mat-icon>Home</button>
-    <button mat-button><mat-icon>how_to_reg</mat-icon>Login</button>
+    <!--<button mat-button><mat-icon>how_to_reg</mat-icon>Login</button>-->
+    <mat-slide-toggle color="primary" (click)="login()">Login</mat-slide-toggle>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -13,11 +14,12 @@
 <mat-sidenav-container>
   <mat-sidenav [(opened)]="opened" #sidenav mode="side" >
     <mat-nav-list>
-      <a mat-list-item href="#" routerLink="/assignment"><mat-icon>assignment</mat-icon>Liste des devoirs</a>
-      <a mat-list-item href="#" routerLink="/add-assignment"><mat-icon>add</mat-icon>Ajout d'un devoir</a>
-      <a mat-list-item href="#" routerLink="/assignment"><mat-icon>edit</mat-icon>Modification d'un devoir</a>
-      <a mat-list-item href="#" routerLink="/assignment-detail"><mat-icon>delete</mat-icon>Suppression d'un devoir</a>
-      <a mat-list-item href="#" routerLink="/assignment"><mat-icon>report_problem</mat-icon>Génération de données de test</a>
+
+      <a mat-list-item routerLink="/assignment"><mat-icon>assignment</mat-icon>Liste des devoirs</a>
+      <a mat-list-item routerLink="/add-assignment"><mat-icon>add</mat-icon>Ajout d'un devoir</a>
+      <a mat-list-item routerLink="/assignment/:id/edit"><mat-icon>edit</mat-icon>Modification d'un devoir</a>
+      <a mat-list-item routerLink="/assignment-detail"><mat-icon>delete</mat-icon>Suppression d'un devoir</a>
+      <a mat-list-item routerLink="/assignment"><mat-icon>report_problem</mat-icon>Génération de données de test</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

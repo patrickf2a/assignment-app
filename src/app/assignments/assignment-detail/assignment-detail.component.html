@@ -10,7 +10,9 @@
 
     <mat-checkbox *ngIf="!assignmentTransmis.rendu" (click)="OnAssignmentRendu()"> Devoir Rendu </mat-checkbox>
     <mat-checkbox *ngIf="assignmentTransmis.rendu" (click)="supprimerRenduAssignment()"> Supprimer Rendu </mat-checkbox>
-    <button  mat-flat-button color="warn"  (click)="DeleteElement()"> Supprimer </button>
+      <button mat-stroked-button color="primary" (click)="OnClickEdit()" [disabled]="!isAdmin()"> Modifier </button>
+
+      <button  mat-flat-button color="warn"  (click)="DeleteElement()"> Supprimer </button>
     </div>
   </mat-card-content>
 </mat-card>

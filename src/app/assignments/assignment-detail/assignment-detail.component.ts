@@ -1,6 +1,8 @@
-import { Component,Input,OnInit,EventEmitter,Output } from '@angular/core';
+import { Component,/*Input*/OnInit,EventEmitter,Output } from '@angular/core';
 import { Assignment } from '../assignment.model';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
+import {ActivatedRoute,Router} from '@angular/router';
+import { AuthService } from 'src/app/shared/auth.service';
 
 
 @Component({
@@ -10,13 +12,28 @@ import { AssignmentsService } from 'src/app/shared/assignments.service';
 })
 export class AssignmentDetailComponent implements OnInit {
 
-  @Input() assignmentTransmis?: Assignment;
+  /*@Input()*/
+  assignmentTransmis?: Assignment | null ;
   @Output() assignmentRendu=new EventEmitter<Assignment>();
   @Output() deleteAssignment=new EventEmitter<Assignment>();
-  constructor( private assignmentService:AssignmentsService) { }
+  constructor( private assignmentService:AssignmentsService,
+               private route:ActivatedRoute,
+               private router:Router,
+               private authService:AuthService) { }
 
   ngOnInit(): void {
-    }
+
+    this.getAssignment();
+  }
+
+
+  getAssignment() {
+    const id = +this.route.snapshot.params['id'];
+    this.assignmentService.getAssignment(id)
+      .subscribe(assignment => {
+        this.assignmentTransmis = assignment;
+      });
+  }
 
   OnAssignmentRendu(){
   // Vérifie que l'objet assignmentTransmis est initialisé avant d'accéder à sa propriété rendu
@@ -24,8 +41,8 @@ export class AssignmentDetailComponent implements OnInit {
     this.assignmentTransmis.rendu = true;
     this.assignmentService.updateAssignment(this.assignmentTransmis)
     .subscribe(message => console.log(message));}
+    this.router.navigate(["/home"]);
     //this.assignmentTransmis = undefined;
-
   }
 
   supprimerRenduAssignment(){
@@ -33,12 +50,15 @@ export class AssignmentDetailComponent implements OnInit {
     if (this.assignmentTransmis) {
       this.assignmentTransmis.rendu = false;
       this.assignmentService.updateRendu(this.assignmentTransmis).subscribe(message => console.log(message));
+      this.router.navigate(["/home"]);
     }
+
     //this.assignmentTransmis = undefined;
   }
 
 
   DeleteElement(){
+    //c'est le OnDelete
     //permet de supprimer l'assignment
     if (this.assignmentTransmis) {
 
@@ -46,6 +66,17 @@ export class AssignmentDetailComponent implements OnInit {
     .subscribe(message => console.log(message));}
 
     this.assignmentTransmis = undefined;
+    this.router.navigate(["/home"]);
   }
+
+  OnClickEdit(){
+    this.router.navigate(["/assignment",this.assignmentTransmis?.id,"edit"],
+    {queryParams:{nom:this.assignmentTransmis?.nom}, fragment:'edition'});
+  }
+
+  isAdmin():boolean{
+    return this.authService.loggedIn;
+  }
+
 
 }

@@ -1,27 +1,30 @@
 <!--/* exemple de formulaire */ -->
 
-<form ngForm (submit)="onSubmit($event);assignmentForm.reset()"
-      #assignmentForm class="form">
+<div class="container"  *ngIf="assignment">
+<form ngForm (submit)="OnSaveAssignment($event);Formupdate.reset()"
+      #Formupdate class="form">
   <!--/* on ajoute un field pour mettre le nom du devoir */ -->
   <mat-form-field>
-    <input matInput [(ngModel)]="nomDevoir" name="nom" placeholder="Nom du devoir" required>
+    <input matInput
+           [(ngModel)]="NomDevoir" name="nom" placeholder="Edition du nom " required>
   </mat-form-field>
 
   <!--/* on ajoute un button pour la date de rendu */-->
   <mat-form-field appearance="fill">
     <input matInput [matDatepicker]="picker"
-           placeholder="Date de rendu"
-           [(ngModel)]="dateRendu"
+           placeholder="Edition de la date de rendu"
+           [(ngModel)]="DateRendu"
            name="dateDeRendu" required>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
   <!--/* on ajoute un button pour ajouter le devoir */-->
-  <button mat-stroked-button
+  <button mat-raised-button
           color="primary"
-          (click)="onSubmit($event)"
-  >
-    Ajouter un devoir
+          [disabled]="((!NomDevoir || !DateRendu))"
+          (click)="OnSaveAssignment($event)">
+    Sauvegarder
   </button>
 </form>
+</div>

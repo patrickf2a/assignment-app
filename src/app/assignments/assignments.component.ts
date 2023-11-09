@@ -1,13 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {Assignment} from './assignment.model';
 import {AssignmentsService} from '../shared/assignments.service';
-
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-assignments',
   templateUrl: './assignments.component.html',
   styleUrls: ['./assignments.component.css']
 })
+
 export class AssignmentsComponent implements OnInit {
   titre = "Mon application sur les Assignments !";
   FormVisible=false;
@@ -29,15 +30,19 @@ export class AssignmentsComponent implements OnInit {
   assignmentClique(assignment: Assignment){
     this.assignementSelectionne = assignment;
   }
+
   onAddAssignmentBtnClick(){
-    this.FormVisible=true;
+   // this.FormVisible=true;
   }
+
+
+  /*
   onNouvelAssignment(event: Assignment){
     //this.assignments.push(event);
     this.assignmentService.addAssignment(event).subscribe(message => console.log(message));
     this.FormVisible=false;// on veut voir la liste avec le nouvel assignment
   }
-
+*/
   OnRenduAssignmentDelete(event : any){
     // permetbde supprimer le rendu et non l'assignment
     this.assignments.forEach((item, index) => {
@@ -46,9 +51,15 @@ export class AssignmentsComponent implements OnInit {
     this.assignementSelectionne = undefined;
   }
 
-  getAssignments(){
-    this.assignmentService.getAssignments()
-      .subscribe(assignments => this.assignments = assignments);
+
+  getAssignments() {
+    this.assignmentService.getAssignments().
+    subscribe(assignments => {
+      this.assignments = assignments;
+    }
+    );
+
   }
+
 
 }

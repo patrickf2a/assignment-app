@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import {Assignment} from "../assignments/assignment.model";
 import {LoggingService} from "./logging.service";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -20,19 +21,30 @@ export class AssignmentsService {
 
 */
         {
+          id:1,
           nom: "TP2 sur Angular, un gestionnaire de devoirs",
           dateDeRendu: new Date("2023-12-17"),
           rendu: false
         },
         {
+          id:2,
           nom: "TP3 sur Angular, utilisation du rooter et de web services",
           dateDeRendu: new Date("2023-10-02"),
           rendu: true
-        },
-  ]
+        }
+  ];
 
-  getAssignments():Observable<Assignment[]>{
-    return of (this.assignments);
+  getNewId():number{
+    return this.assignments.length+1;
+  }
+
+  getAssignments(): Observable<Assignment[]>{
+    return of(this.assignments);
+  }
+
+  getAssignment(id : any): Observable<Assignment | undefined >{
+   const a:Assignment | undefined = this.assignments.find( assignment => assignment.id === id);
+   return of(a);
   }
 
   addAssignment(assignment: Assignment):Observable<string>{
@@ -67,4 +79,5 @@ export class AssignmentsService {
     });
     return of("Assignment supprimé avec succès");
   }
+
 }
