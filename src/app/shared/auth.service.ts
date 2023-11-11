@@ -29,13 +29,6 @@ export class AuthService {
       );
     }
 
-    getRole() {
-      if (this.loggedInUser) {
-        return this.loggedInUser.role;
-      }
-      return null;
-    }
-
     isAdmin() {
       if (this.loggedInUser) {
         return this.loggedInUser.role === 'admin';
