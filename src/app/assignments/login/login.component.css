@@ -1,0 +1,36 @@
+/* Sélectionne tous les éléments de formulaire */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Sélectionne tous les champs de saisie */
+input {
+  margin: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Sélectionne le bouton de soumission */
+button {
+  margin: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Change la couleur du bouton de soumission au survol */
+button:hover {
+  background-color: #0069d9;
+}

@@ -10,19 +10,26 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = "Mon Assignment app"
   opened = false;
+  islogin=false;
 
-  constructor(private autService: AuthService,
+  constructor(private authService: AuthService,
               private router: Router) {
   }
 
   login() {
-
-    if (!this.autService.loggedIn) {
-      this.autService.logIn();
-    } else {
-      this.autService.logOut();
-      // on retourne sur la page d'accueil
-      this.router.navigate(["/home"]);
+    if (!this.authService.loggedInUser) {
+      this.islogin=true;
+      this.router.navigate(['/login']);  
     }
+    return this.islogin;
+  }
+
+  logout() {
+    this.authService.logout();
+    // navigue vers login
+    this.router.navigate(['/login']);
   }
 }
+
+
+

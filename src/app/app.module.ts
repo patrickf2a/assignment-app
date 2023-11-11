@@ -17,6 +17,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -28,6 +31,8 @@ import { AddAssignmentComponent } from './assignments/add-assignment/add-assignm
 import { AppRoutingModule } from './app-routing.module';
 import { AssignmentsService } from './shared/assignments.service';
 import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
+import { LoginComponent } from './assignments/login/login.component';
+
 
 
 @NgModule({
@@ -38,6 +43,7 @@ import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assi
     AssignmentDetailComponent,
     AddAssignmentComponent,
     EditAssignmentComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +63,7 @@ import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assi
     MatSidenavModule,
     AppRoutingModule,
     MatSlideToggleModule,
+    ReactiveFormsModule
   ],
   providers: [AssignmentsService],
   bootstrap: [AppComponent],

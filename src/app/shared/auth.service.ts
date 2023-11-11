@@ -1,30 +1,52 @@
 import { Injectable } from '@angular/core';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  loggedIn = false;
 
-  logIn(){
-    this.loggedIn = true;
-  }
+  loggedInUser:any;
 
-  logOut(){
-    // si false on peut rien faire pour edit
-    this.loggedIn = false;
-    //this.loggedIn = true;
-  }
+  users = [
+      { username: 'user', password: 'pass', role: 'user' },
+      { username: 'admin', password: 'pass', role: 'admin' },
+    ];
 
-  isAdmin(){
-    const isUserAdmin = new Promise(
-      (resolve,reject) => {
-        setTimeout(() => {
-          resolve(this.loggedIn);
-        }, 100);
-      });
-      return isUserAdmin;
-  }
+
+    isLogged(username: string, password: string) {
+      const user = this.getUser(username, password);
+      if(user) {
+        this.loggedInUser = user;
+        return true;
+      }
+      return false;
+    }
+
+    getUser(username: string, password: string) {
+      return this.users.find(
+        user => user.username === username && user.password === password
+      );
+    }
+
+    getRole() {
+      if (this.loggedInUser) {
+        return this.loggedInUser.role;
+      }
+      return null;
+    }
+
+    isAdmin() {
+      if (this.loggedInUser) {
+        return this.loggedInUser.role === 'admin';
+      }
+      return false;
+    }
+
+    logout() {
+      this.loggedInUser = null;
+      console.log("deconnecter avec succes")
+    }
 
 
   constructor() { }

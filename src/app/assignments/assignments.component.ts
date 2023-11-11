@@ -29,6 +29,7 @@ export class AssignmentsComponent implements OnInit {
 
   assignmentClique(assignment: Assignment){
     this.assignementSelectionne = assignment;
+    console.log("L'assignement selectionné est "+this.assignementSelectionne);
   }
 
   onAddAssignmentBtnClick(){

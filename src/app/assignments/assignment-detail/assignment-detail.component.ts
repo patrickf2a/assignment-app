@@ -5,6 +5,7 @@ import {ActivatedRoute,Router} from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
 
 
+
 @Component({
   selector: 'app-assignment-detail',
   templateUrl: './assignment-detail.component.html',
@@ -13,7 +14,8 @@ import { AuthService } from 'src/app/shared/auth.service';
 export class AssignmentDetailComponent implements OnInit {
 
   /*@Input()*/
-  assignmentTransmis?: Assignment | null ;
+  assignmentTransmis?: Assignment ;
+  isAdmin=false;
   @Output() assignmentRendu=new EventEmitter<Assignment>();
   @Output() deleteAssignment=new EventEmitter<Assignment>();
   constructor( private assignmentService:AssignmentsService,
@@ -21,9 +23,11 @@ export class AssignmentDetailComponent implements OnInit {
                private router:Router,
                private authService:AuthService) { }
 
-  ngOnInit(): void {
+
+  ngOnInit() {
 
     this.getAssignment();
+    this.checkRole();
   }
 
 
@@ -65,18 +69,20 @@ export class AssignmentDetailComponent implements OnInit {
     this.assignmentService.deleteAssignment(this.assignmentTransmis)
     .subscribe(message => console.log(message));}
 
-    this.assignmentTransmis = undefined;
     this.router.navigate(["/home"]);
+    this.assignmentTransmis = undefined;
   }
 
-  OnClickEdit(){
-    this.router.navigate(["/assignment",this.assignmentTransmis?.id,"edit"],
-    {queryParams:{nom:this.assignmentTransmis?.nom}, fragment:'edition'});
+checkRole(){
+  if(this.authService.isAdmin()){
+    this.isAdmin=true;
   }
-
-  isAdmin():boolean{
-    return this.authService.loggedIn;
-  }
-
-
 }
+
+
+  edit() {
+    this.router.navigate(["/assignment", this.assignmentTransmis?.id, "edit"], 
+    { queryParams: { nom: this.assignmentTransmis?.nom }, fragment: 'edition' });}
+}
+
+

@@ -5,8 +5,9 @@
     <button mat-button (click)="opened=!opened"><mat-icon>menu</mat-icon></button>
     <a class="title-center" routerLink="" >{{title}}</a>
     <button mat-button routerLink="/home"><mat-icon>home</mat-icon>Home</button>
-    <!--<button mat-button><mat-icon>how_to_reg</mat-icon>Login</button>-->
-    <mat-slide-toggle color="primary" (click)="login()">Login</mat-slide-toggle>
+    <button mat-button (click)="login()"><mat-icon>how_to_reg</mat-icon>Login</button>
+    <button mat-button (click)="logout()" [disabled]="!islogin"><mat-icon>how_to_reg</mat-icon>Logout</button>
+    <!-- <mat-slide-toggle color="primary" (click)="login()">Login</mat-slide-toggle>-->
   </mat-toolbar-row>
 </mat-toolbar>
 
