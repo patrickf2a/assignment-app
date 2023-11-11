@@ -21,7 +21,7 @@ export class AssignmentDetailComponent implements OnInit {
   constructor( private assignmentService:AssignmentsService,
                private route:ActivatedRoute,
                private router:Router,
-               private authService:AuthService) { }
+               public authService:AuthService) { }
 
 
   ngOnInit() {
@@ -81,7 +81,7 @@ checkRole(){
 
 
   edit() {
-    this.router.navigate(["/assignment", this.assignmentTransmis?.id, "edit"], 
+    this.router.navigate(["/assignment", this.assignmentTransmis?.id, "edit"],
     { queryParams: { nom: this.assignmentTransmis?.nom }, fragment: 'edition' });}
 }
 
