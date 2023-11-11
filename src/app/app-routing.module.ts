@@ -4,7 +4,6 @@ import { AssignmentsComponent } from './assignments/assignments.component';
 import { AssignmentDetailComponent } from './assignments/assignment-detail/assignment-detail.component';
 import { AddAssignmentComponent } from './assignments/add-assignment/add-assignment.component';
 import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
-import { AuthGuard } from './shared/auth.guard';
 import { LoginComponent } from './assignments/login/login.component';
 
 const routes: Routes = [
