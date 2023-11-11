@@ -1,5 +1,5 @@
 .tittle-toolbar {
-  background-color: #555555;
+  background-color:#3498DB;
 }
 
 .title-center {
@@ -7,7 +7,7 @@
   color: white;
 }
 mat-toolbar-row {
-  justify-content: center;
+  justify-content: space-between;
   color: white;
 }
 
@@ -17,19 +17,16 @@ mat-sidenav-container{
 
 mat-sidenav{
   width: 300px;
-  text-align: center;
-  background-color: #eee;
+  background-color: #F1F1F1;
 }
 a mat-list-item {
   display: flex;
   align-items: center;
-  justify-content: center;
   margin-bottom: 20px;
   font-size: 27px;
 }
 
 mat-icon {
-  margin-right: 10px;
-  align-self: center;
+  margin-right: 16px;
   font-size: 24px;
 }
