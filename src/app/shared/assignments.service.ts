@@ -22,13 +22,13 @@ export class AssignmentsService {
 */
         {
           id:1,
-          nom: "TP2 sur Angular, un gestionnaire de devoirs",
+          nom: "TP2 sur Angular",
           dateDeRendu: new Date("2023-12-17"),
           rendu: false
         },
         {
           id:2,
-          nom: "TP3 sur Angular, utilisation du rooter et de web services",
+          nom: "TP3 de JAVA",
           dateDeRendu: new Date("2023-10-02"),
           rendu: true
         }

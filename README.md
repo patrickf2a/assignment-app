@@ -21,3 +21,21 @@ Repository où déposer le projet n°2 Angular
 [^1]: à remplir
 [^2]: à remplir
 [^3]: vous pouvez cocher les tâches qui ont été faites en utilisant la syntaxe `[x]` dans le markdown
+
+
+
+Conseils d'utilisation : 
+- Pour lancer le projet, il faut lancer la commande `ng serve` dans le terminal
+- Ensuite quand l'application est lancer pour pourvoir voir la liste des devoirs c'est depuis la sidenav en cliquant sur "Liste des devoirs"
+- Une fois dessus quand on clique sur un devoir on ne peut voir les détails du devoir car on est n'est pas connecter.
+- Pour se connecter il faut cliquer sur le bouton "loggin" en haut à droite de la page.
+- Une fois sur la page de connexion il faut rentrer les identifiants suivant : 
+  - username : admin ou user
+  - password : pass
+
+- Une fois connecter on peut voir les détails du devoir et on peut aussi modifier ou supprimer le devoir si on est admin.
+- Si on est pas connecter en tant que admin mais en tant que user on ne peut pas modifier ou supprimer le devoir, on ne peut que consulter les details du devoir et cliquer sur devoir rendu ( qui renvoi le devoir surligne en jaune) ou alors supprimer le rendu si on le souhaite qui rend le devoir à son état d'origine.
+- Lorsqu'on souhaite changer d'utilisateur il faut cliquer sur le bouton "logout" en haut à droite de la page.Ce qui va reset l'utilisateur et on pourra a nouveau se connecter.
+
+- Pour ajouter un devoir il faut également etre connecter en tant que admin.
+- Pour revenir à la page d'accueil il faut cliquer sur le titre "Mon Assignment app" en haur de la page.

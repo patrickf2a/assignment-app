@@ -2,6 +2,7 @@ import { Component,/*EventEmitter,Output*/OnInit } from '@angular/core';
 import {Assignment} from "../assignment.model";
 import {AssignmentsService} from "../../shared/assignments.service";
 import {Router} from "@angular/router";
+import {AuthService} from "../../shared/auth.service";
 
 @Component({
   selector: 'app-add-assignment',
@@ -16,7 +17,8 @@ export class AddAssignmentComponent implements OnInit {
   // date a la quel on le rend
   dateRendu?:Date;
 
-  constructor(private assignmentsService:AssignmentsService,private router: Router) { }
+  constructor(private assignmentsService:AssignmentsService,private router: Router,
+              public authService:AuthService) { }
   ngOnInit(): void {
 
   }
