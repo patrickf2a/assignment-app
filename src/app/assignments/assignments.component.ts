@@ -58,6 +58,7 @@ export class AssignmentsComponent implements OnInit {
       this.assignments = assignments;
     }
     );
+    console.log("on demande les assignments au service");
 
   }
 

@@ -30,7 +30,8 @@ export class AddAssignmentComponent implements OnInit {
 
     const newAssignment = new Assignment();
 
-    newAssignment.id = this.assignmentsService.getNewId();
+    //newAssignment.id = this.assignmentsService.getNewId();
+    newAssignment.id = Math.floor(Math.random() * 1000000);
 
     newAssignment.nom = this.nomDevoir;
     newAssignment.dateDeRendu = this.dateRendu;
@@ -40,7 +41,7 @@ export class AddAssignmentComponent implements OnInit {
 
     //this.nouvelAssignment.emit(newAssignment);
     this.assignmentsService.addAssignment(newAssignment).
-    subscribe(message => console.log(message));
+    subscribe(reponse => console.log("reponse du serveur : " + reponse.message));
 
     //console.log(newAssignment);
 

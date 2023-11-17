@@ -32,7 +32,7 @@ export class AssignmentDetailComponent implements OnInit {
 
 
   getAssignment() {
-    const id = +this.route.snapshot.params['id'];
+    const id:number = +this.route.snapshot.params['id'];
     this.assignmentService.getAssignment(id)
       .subscribe(assignment => {
         this.assignmentTransmis = assignment;
@@ -44,16 +44,22 @@ export class AssignmentDetailComponent implements OnInit {
   if (this.assignmentTransmis) {
     this.assignmentTransmis.rendu = true;
     this.assignmentService.updateAssignment(this.assignmentTransmis)
-    .subscribe(message => console.log(message));}
-    this.router.navigate(["/home"]);
+    .subscribe(reponse => {
+      console.log("Reponse du serveur : " + reponse.message)
+      this.router.navigate(["/home"]);
+    });
     //this.assignmentTransmis = undefined;
   }
+}
 
   supprimerRenduAssignment(){
     // permet de supprimer le rendu et non l'assignment
     if (this.assignmentTransmis) {
       this.assignmentTransmis.rendu = false;
-      this.assignmentService.updateRendu(this.assignmentTransmis).subscribe(message => console.log(message));
+      this.assignmentService.updateRendu(this.assignmentTransmis)
+        .subscribe(reponse => {
+          console.log("Reponse du serveur : " + reponse.message)
+        });
       this.router.navigate(["/home"]);
     }
 
@@ -67,10 +73,13 @@ export class AssignmentDetailComponent implements OnInit {
     if (this.assignmentTransmis) {
 
     this.assignmentService.deleteAssignment(this.assignmentTransmis)
-    .subscribe(message => console.log(message));}
-
-    this.router.navigate(["/home"]);
-    this.assignmentTransmis = undefined;
+    .subscribe(reponse =>
+    {
+          console.log(" Reponse du serveur :" + reponse.message);
+      this.router.navigate(["/home"]);
+      });
+      this.assignmentTransmis = undefined;
+    }
   }
 
 checkRole(){
@@ -78,7 +87,6 @@ checkRole(){
     this.isAdmin=true;
   }
 }
-
 
   edit() {
     this.router.navigate(["/assignment", this.assignmentTransmis?.id, "edit"],

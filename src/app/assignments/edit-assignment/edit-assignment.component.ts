@@ -45,8 +45,12 @@ export class EditAssignmentComponent {
     this.assignment.nom = this.NomDevoir;
     this.assignment.dateDeRendu = this.DateRendu;
     this.assignmentService.updateAssignment(this.assignment)
-    .subscribe(message => console.log(message));
-    this.router.navigate(["/home"]);
+    .subscribe(reponse =>{
+      console.log("Reponse du serveur : " + reponse.message);
+      this.router.navigate(["/home"]);
+
+    });
+    //this.router.navigate(["/home"]);
   }
 
 }
