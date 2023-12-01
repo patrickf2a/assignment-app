@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, forkJoin } from 'rxjs';
 import {Assignment} from "../assignments/assignment.model";
 import {LoggingService} from "./logging.service";
 import {Router} from "@angular/router";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {bdInitialAssignments} from "./data";
 
 @Injectable({
   providedIn: 'root'
@@ -20,91 +21,60 @@ export class AssignmentsService {
               private http:HttpClient) { }
 
   assignments : Assignment[] = [];
-/*
-        {
-          nom:this.nomDevoir,
-          dateDeRendu: new Date(),
-          rendu: false
-        },
-
-
-        {
-          id:1,
-          nom: "TP2 sur Angular",
-          dateDeRendu: new Date("2023-12-17"),
-          rendu: false
-        },
-        {
-          id:2,
-          nom: "TP3 de JAVA",
-          dateDeRendu: new Date("2023-10-02"),
-          rendu: true
-        }
-  ];
-*/
 
   getNewId():number{
     return this.assignments.length+1;
   }
 
   url= "http://localhost:8010/api/assignments";
+
   getAssignments(): Observable<Assignment[]>{
 
     return this.http.get<Assignment[]>(this.url);
-    //return of(this.assignments);
+  }
+
+  getAssignmentsPagines(page:number,limit:number): Observable<any>{
+    return this.http.get<any>(this.url+"?page="+page+"&limit="+limit);
   }
 
   getAssignment(id : number): Observable<Assignment | undefined >{
-    /*
-   const a:Assignment | undefined = this.assignments.find( assignment => assignment.id === id);
-   return of(a);*/
     return this.http.get<Assignment>(this.url+"/"+id);
   }
 
   addAssignment(assignment: Assignment):Observable<any>{
-    //this.assignments.push(assignment);
-    //this.logginService.log(assignment.nom, "ajouté");
-
-    //return of("Assignment ajouté avec succès");
     return this.http.post<Assignment>(this.url,assignment,this.httpOptions);
   }
 
   updateAssignment(assignment: Assignment):Observable<any>{
-    /*
-    this.assignments.forEach((item, index) => {
-      if(item === assignment){
-        this.assignments[index] = assignment;
-      }
-    });
-
-     */
     return this.http.put<Assignment>(this.url,assignment);
     return of("Assignment modifié avec succès");
   }
 
 
   updateRendu(assignment: Assignment):Observable<any>{
-    /*
-    this.assignments.forEach((item, index) => {
-      if(item === assignment){
-        this.assignments[index] = assignment;
-      }
-    });
-    */
     return this.http.put<Assignment>(this.url,assignment);
     return of("Rendu de l'Assignment modifié avec succès");
   }
 
 
   deleteAssignment(assignment: Assignment):Observable<any>{
-    /*
-    this.assignments.forEach((item, index) => {
-      if(item === assignment) this.assignments.splice(index,1);
-    });
-    */
     return this.http.delete(this.url + "/" + assignment._id);
-    //
     return of("Assignment supprimé avec succès");
   }
 
+  peuplerBD():Observable<any>{
+    let appelsVersAddAssignment:Observable<any>[] = [];
+
+    bdInitialAssignments.forEach(a => {
+      const nouvelAssignment = new Assignment();
+      nouvelAssignment.id = a.id;
+      nouvelAssignment.nom = a.nom;
+      nouvelAssignment.dateDeRendu = new Date(a.dateDeRendu);
+      nouvelAssignment.rendu = a.rendu;
+
+      appelsVersAddAssignment.push(this.addAssignment(nouvelAssignment))
+    });
+    console.log("###Tous les Assingnement sont ajouter !!!")
+    return forkJoin(appelsVersAddAssignment);
+  }
 }

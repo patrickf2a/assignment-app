@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
 import { AuthService } from './shared/auth.service';
 import { Router } from '@angular/router';
+import { AssignmentsService } from './shared/assignments.service';
 
 @Component({
   selector: 'app-root',
@@ -13,13 +14,14 @@ export class AppComponent {
   islogin=false;
 
   constructor(private authService: AuthService,
-              private router: Router) {
+              private router: Router,
+              private assignmentService: AssignmentsService) {
   }
 
   login() {
     if (!this.authService.loggedInUser) {
       this.islogin=true;
-      this.router.navigate(['/login']);  
+      this.router.navigate(['/login']);
     }
     return this.islogin;
   }
@@ -29,6 +31,15 @@ export class AppComponent {
     // navigue vers login
     this.router.navigate(['/login']);
   }
+
+  InitalBD(){
+    this.assignmentService.peuplerBD().
+    subscribe(() => {
+      console.log("BD initialisée");
+      this.router.navigate(['/home'],{replaceUrl:true});
+      })
+    }
+
 }
 
 
