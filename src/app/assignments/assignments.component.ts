@@ -56,14 +56,15 @@ export class AssignmentsComponent implements OnInit,AfterViewInit{
     // Pour la table
 
     this.assignmentService.getAssignments().subscribe(assignments => {
-      this.dataSource= new MatTableDataSource(this.assignments);
+      this.dataSource = new MatTableDataSource(this.assignments)
       this.dataSource.sort = this.sort;
       if (this.paginator){
         this.dataSource.paginator = this.paginator;
       }
-    });
-
     this.getAssignmentsPagines();
+  }
+);
+
   }
 
   // Pour la pagination
