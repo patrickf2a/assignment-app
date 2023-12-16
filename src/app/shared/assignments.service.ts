@@ -5,7 +5,8 @@ import {LoggingService} from "./logging.service";
 import {Router} from "@angular/router";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {bdInitialAssignments} from "./data";
-
+import {Matiere} from "../assignments/Matiere.model";
+import {bdInitialMatieres} from "./data_matiere";
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +17,7 @@ export class AssignmentsService {
     })
   };
 
-
+  subjectList: Matiere[] = [];
   constructor(private logginService:LoggingService,
               private http:HttpClient) { }
 
@@ -33,7 +34,7 @@ export class AssignmentsService {
     return this.http.get<Assignment[]>(this.url);
   }
 
-  getAssignmentsPagines(page:number,limit:number): Observable<any>{
+  getAssignmentsPagines(page:number,limit:number,search?:string): Observable<any>{
     return this.http.get<any>(this.url+"?page="+page+"&limit="+limit);
   }
 
@@ -71,10 +72,34 @@ export class AssignmentsService {
       nouvelAssignment.nom = a.nom;
       nouvelAssignment.dateDeRendu = new Date(a.dateDeRendu);
       nouvelAssignment.rendu = a.rendu;
+      nouvelAssignment.auteur=a.auteur;
+      nouvelAssignment.remarques=a.remarque;
+      nouvelAssignment.note=a.notematiere;
+      const randomElement =this.getRandomElement(bdInitialMatieres);
+      nouvelAssignment.matiere=randomElement.nom;
+      nouvelAssignment.photoprof=randomElement.photoprof;
+      nouvelAssignment.photomatiere=randomElement.photomatiere;
+
 
       appelsVersAddAssignment.push(this.addAssignment(nouvelAssignment))
     });
     console.log("###Tous les Assingnement sont ajouter !!!")
     return forkJoin(appelsVersAddAssignment);
   }
+
+  getmatieres():Observable<Matiere[]>{
+    this.subjectList=bdInitialMatieres;
+    return of(bdInitialMatieres);
+  }
+  getmateireById(id:number):Observable<Matiere|undefined>{
+    return of(this.subjectList.find(a=>a.id === id));
+  }
+  getmatiereByName(name:string):Observable<Matiere|undefined>{
+    return of(this.subjectList.find((a)=>{a.nom == name}));
+  }
+  getRandomElement(array: any[]): any {
+    const randomIndex = Math.floor(Math.random() * array.length);
+    return array[randomIndex];
+  }
+
 }

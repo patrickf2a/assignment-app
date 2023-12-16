@@ -1,3 +1,5 @@
+<div class="form-container">
+
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="username">Nom d'utilisateur</label>
@@ -11,3 +13,5 @@
 
   <button type="submit" [disabled]="!loginForm.valid">Connecter</button>
 </form>
+
+</div>

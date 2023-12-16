@@ -1,36 +1,52 @@
-/* Sélectionne tous les éléments de formulaire */
-form {
+.form-container {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  min-height: 100vh; /* Hauteur minimale */
 }
 
-/* Sélectionne tous les champs de saisie */
-input {
-  margin: 10px;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+form {
+  width: 50%;
+  max-width: 600px;
+  padding: 40px;
+  margin: 20px;
+  background-color: #f9f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.form-group {
+  margin-bottom: 15px; /* Espace entre les champs */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+
+.form-group input {
   width: 100%;
-  max-width: 300px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
-/* Sélectionne le bouton de soumission */
-button {
-  margin: 10px;
+/* Style du bouton de soumission */
+button[type="submit"] {
+  width: 100%;
   padding: 10px;
-  border: none;
-  border-radius: 5px;
   background-color: #007bff;
-  color: #fff;
+  color: white;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 100%;
-  max-width: 300px;
+  transition: background-color 0.3s;
 }
 
-/* Change la couleur du bouton de soumission au survol */
-button:hover {
-  background-color: #0069d9;
+button[type="submit"]:hover {
+  background-color: #0056b3;
 }

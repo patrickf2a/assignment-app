@@ -19,10 +19,31 @@
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
-  <!--/* on ajoute un button pour ajouter le devoir */-->
+  <!--/* champ pour le nom de l'élève (auteur) */ -->
+  <mat-form-field>
+    <input matInput [(ngModel)]="auteur" name="auteur" placeholder="Nom de l'élève" required>
+  </mat-form-field>
+
+  <!--/* champ pour la matière */ -->
+  <mat-form-field>
+    <input matInput [(ngModel)]="matiere" name="matiere" placeholder="Matière" required>
+  </mat-form-field>
+
+  <!--/* champ pour la note sur 20 */ -->
+  <mat-form-field>
+    <input matInput [(ngModel)]="note" name="note" placeholder="Note sur 20" required>
+  </mat-form-field>
+
+  <!--/* champ pour les remarques sur l'assignment */ -->
+  <mat-form-field>
+    <textarea matInput [(ngModel)]="remarques" name="remarques" placeholder="Remarques sur l'assignment"></textarea>
+  </mat-form-field>
+
+
+  <!--/* bouton pour sauvegarder l'assignment */ -->
   <button mat-raised-button
           color="primary"
-          [disabled]="((!NomDevoir || !DateRendu))"
+          [disabled]="((!NomDevoir || !DateRendu || !auteur || !matiere || !photomatiere || !photoprof || !note))"
           (click)="OnSaveAssignment($event)">
     Sauvegarder
   </button>

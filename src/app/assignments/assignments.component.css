@@ -1,35 +1,131 @@
-.rendu{
-  color: green;
-  border: 1px solid green;
-  border-radius: 5px;
-  padding: 5px;
-  margin: 5px;
-  width: 500px;
-  text-align: center;
+.container {
+  padding: 20px;
+}
+
+.mat-elevation-z8 {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: #f5f5f5;
+  color: #333;
   font-weight: bold;
-  font-size: 1.2em;
+  padding: 8px;
+  text-align: left;
+}
+
+td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+img {
+  border-radius: 50%;
+  height: auto;
+}
+
+.mat-paginator {
+  background-color: transparent;
+  color: #333;
+}
+
+.Button{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/*
+.ajouterBtn button {
+  background-color: #009688;
+  color: white;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
-
-.nonRendu{
-  color: red;
-  border: 1px solid red;
-  border-radius: 5px;
-  padding: 5px;
-  margin: 5px;
-  width: 500px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.2em;
-  cursor: pointer;
-}
-
-.container{
-  display:flex;
-  flex-direction: column;
-}
-
+*/
 .ajouterBtn {
-align-self: flex-end;
+  margin-right: 10px; /* Espace entre le bouton Ajouter et les autres éléments */
 }
+.search-container, .filter-button-container {
+  margin: 0 10px; /* Espace autour des éléments de recherche et de filtre */
+}
+
+/*
+.ajouterBtn button:hover {
+  background-color: #00796b;
+}
+*/
+
+.pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.navigation-buttons button {
+  margin-right: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.navigation-buttons button:hover {
+  background-color: #0056b3;
+}
+
+.pagination-info {
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+  background-color: #f8f9fa;
+}
+
+.mat-paginator {
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.filter-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.filter-button-container button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 

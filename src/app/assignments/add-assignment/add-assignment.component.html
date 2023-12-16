@@ -1,10 +1,34 @@
-<!--/* exemple de formulaire */ -->
-
 <form ngForm (submit)="onSubmit($event);assignmentForm.reset()"
-       #assignmentForm class="form"  *ngIf="authService.isAdmin()" >
+      #assignmentForm class="form"  *ngIf="authService.isAdmin()" >
   <!--/* on ajoute un field pour mettre le nom du devoir */ -->
   <mat-form-field >
     <input matInput [(ngModel)]="nomDevoir" name="nom" placeholder="Nom du devoir" required>
+  </mat-form-field>
+
+  <!--/* on ajoute un field pour le nom de l'élève (auteur) */ -->
+  <mat-form-field>
+    <input matInput [(ngModel)]="auteur" name="auteur" placeholder="Nom de l'élève" required>
+  </mat-form-field>
+
+  <!--/* on ajoute un field pour la note sur 20 */ -->
+  <mat-form-field>
+    <input matInput [(ngModel)]="note" name="note" placeholder="Note sur 20" required>
+  </mat-form-field>
+
+  <!--/* on ajoute un field pour les remarques sur l'assignment */ -->
+  <mat-form-field>
+    <textarea matInput [(ngModel)]="remarques" name="remarques" placeholder="Remarques sur l'assignment"></textarea>
+  </mat-form-field>
+
+  <!--/* on ajoute un field pour la matière */ -->
+  <mat-form-field>
+    <mat-select  [(value)]="valeurselectionneID" (selectionChange)="onOptionSelected($event)" >
+      <mat-option  *ngFor="let mateire of matieres" [value]="mateire.id"  >
+        {{mateire.nom}}&nbsp;  <img [src]="mateire.photoprof">  <img  class="image2" [src]="mateire.photomatiere">
+      </mat-option>
+    </mat-select>
+
+    <!--<input matInput [(ngModel)]="matiere" name="matiere" placeholder="Matière" required>-->
   </mat-form-field>
 
   <!--/* on ajoute un button pour la date de rendu */-->
@@ -20,6 +44,7 @@
   <!--/* on ajoute un button pour ajouter le devoir */-->
   <button mat-stroked-button
           color="primary"
+          [disabled]="(!nomDevoir || !dateRendu || !auteur || !matiere || !photomatiere || !photoprof || !note)"
           (click)="onSubmit($event)"
   >
     Ajouter un devoir
