@@ -7,6 +7,8 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {bdInitialAssignments} from "./data";
 import {Matiere} from "../assignments/Matiere.model";
 import {bdInitialMatieres} from "./data_matiere";
+import {User} from "../assignments/User.model";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,6 +20,7 @@ export class AssignmentsService {
   };
 
   subjectList: Matiere[] = [];
+
   constructor(private logginService:LoggingService,
               private http:HttpClient) { }
 
@@ -26,8 +29,10 @@ export class AssignmentsService {
   getNewId():number{
     return this.assignments.length+1;
   }
+  user=User;
 
   url= "http://localhost:8010/api/assignments";
+  url2= "http://localhost:8010/api/user";
 
   getAssignments(): Observable<Assignment[]>{
 
@@ -101,5 +106,12 @@ export class AssignmentsService {
     const randomIndex = Math.floor(Math.random() * array.length);
     return array[randomIndex];
   }
+
+  createUser(user : User): Observable<any> {
+    return this.http.post<User>(this.url2,user,this.httpOptions);
+    //return of("User crée avec succès");
+  }
+
+
 
 }

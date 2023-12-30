@@ -37,6 +37,7 @@ import { MatSortModule } from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatStepperModule } from '@angular/material/stepper';
+import { CreateAccountComponent } from './assignments/create-account/create-account.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { MatStepperModule } from '@angular/material/stepper';
     AddAssignmentComponent,
     EditAssignmentComponent,
     LoginComponent,
+    CreateAccountComponent,
   ],
   imports: [
     BrowserModule,

@@ -23,8 +23,8 @@
   <!--/* on ajoute un field pour la matière */ -->
   <mat-form-field>
     <mat-select  [(value)]="valeurselectionneID" (selectionChange)="onOptionSelected($event)" >
-      <mat-option  *ngFor="let mateire of matieres" [value]="mateire.id"  >
-        {{mateire.nom}}&nbsp;  <img [src]="mateire.photoprof">  <img  class="image2" [src]="mateire.photomatiere">
+      <mat-option  *ngFor="let matiere of matieres" [value]="matiere.id"  >
+        {{matiere.nom}}&nbsp;  <img [src]="matiere.photoprof">  <img  class="image2" [src]="matiere.photomatiere">
       </mat-option>
     </mat-select>
 

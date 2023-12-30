@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup ,Validators} from '@angular/forms'
 import { AuthService } from 'src/app/shared/auth.service';
 import { Router } from '@angular/router';
+import { User } from '../User.model';
 
 @Component({
   selector: 'app-login',
@@ -16,28 +17,29 @@ export class LoginComponent {
 
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      isAdmin: [false]
     });
   }
 
-onSubmit() {
-
-  if(this.loginForm.valid) {
-    const { username, password } = this.loginForm.value;
-
-    if(this.authService.isLogged(username, password)) {
-
-      console.log('connecter avec succes ');
-      this.router.navigate(['/home']);
-
-    } else {
-
-      console.log('connexion echouer');
-
+  onSubmit() {
+    if (this.loginForm.valid) {
+      const { username, password } = this.loginForm.value;
+      this.authService.login(username, password).subscribe(
+        response => {
+          if(response.success) {
+            this.router.navigate(['/home']);
+          } else {
+            alert('Échec de la connexion');
+          }
+        },
+        error => {
+          console.error('Erreur lors de la connexion:', error);
+          alert('Erreur de connexion');
+        }
+      );
     }
-
   }
 
-}
 
 }

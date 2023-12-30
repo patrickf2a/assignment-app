@@ -1,4 +1,4 @@
-import {Component, OnInit,ViewChild,AfterViewInit} from '@angular/core';
+import {Component, OnInit,ViewChild} from '@angular/core';
 import {Assignment} from './assignment.model';
 import {AssignmentsService} from '../shared/assignments.service';
 import {MatTableDataSource} from '@angular/material/table';
@@ -13,8 +13,8 @@ import {MatCheckboxChange} from '@angular/material/checkbox';
   styleUrls: ['./assignments.component.css']
 })
 
-export class AssignmentsComponent implements OnInit,AfterViewInit{
-  titre = "Mon application sur les Assignments !";
+export class AssignmentsComponent implements OnInit{
+  //titre = "Mon application sur les Assignments !";
   FormVisible=false;
 
   assignementSelectionne? : Assignment;
@@ -98,11 +98,6 @@ export class AssignmentsComponent implements OnInit,AfterViewInit{
     this.page = event.pageIndex + 1;
     this.limit = event.pageSize;
     this.getAssignmentsPagines();
-  }
-
-  ngAfterViewInit(){
-    this.dataSource.data;
-
   }
 
   assignmentClique(assignment: Assignment){

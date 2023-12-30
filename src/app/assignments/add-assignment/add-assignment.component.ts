@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { Assignment } from "../assignment.model";
 import { AssignmentsService } from "../../shared/assignments.service";
 import { Router } from "@angular/router";
 import { AuthService } from "../../shared/auth.service";
 import { MatSelectChange } from '@angular/material/select';
 import { Matiere } from "../Matiere.model";
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-add-assignment',
@@ -23,14 +24,20 @@ export class AddAssignmentComponent implements OnInit {
   matieres: Matiere[]= [];
   valeurselectionneID:number=0;
 
+  assignmentForm!:FormGroup;
+
   constructor(private assignmentsService: AssignmentsService,
               private router: Router,
               public authService: AuthService) { }
 
   ngOnInit(): void {
-    this.assignmentsService.getmatieres().subscribe((a)=>{
-      this.matieres=a;
-    })
+    if (!this.authService.isLoggedIn()) {
+      this.router.navigate(['/login']);
+    } else {
+      this.assignmentsService.getmatieres().subscribe((a) => {
+        this.matieres = a;
+      })
+    }
   }
 
   onSubmit(event: Event) {

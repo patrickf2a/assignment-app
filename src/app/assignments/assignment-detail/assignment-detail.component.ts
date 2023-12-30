@@ -15,7 +15,6 @@ export class AssignmentDetailComponent implements OnInit {
 
   /*@Input()*/
   assignmentTransmis?: Assignment ;
-  isAdmin=false;
   @Output() assignmentRendu=new EventEmitter<Assignment>();
   @Output() deleteAssignment=new EventEmitter<Assignment>();
   constructor( private assignmentService:AssignmentsService,
@@ -25,9 +24,11 @@ export class AssignmentDetailComponent implements OnInit {
 
 
   ngOnInit() {
-
-    this.getAssignment();
-    this.checkRole();
+    if (!this.authService.isLoggedIn()) {
+      this.router.navigate(['/login']);
+    } else {
+      this.getAssignment();
+    }
   }
 
 
@@ -81,12 +82,6 @@ export class AssignmentDetailComponent implements OnInit {
       this.assignmentTransmis = undefined;
     }
   }
-
-checkRole(){
-  if(this.authService.isAdmin()){
-    this.isAdmin=true;
-  }
-}
 
   edit() {
     this.router.navigate(["/assignment", this.assignmentTransmis?.id, "edit"],

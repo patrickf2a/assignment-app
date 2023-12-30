@@ -7,7 +7,7 @@ export class Assignment {
   dateDeRendu!: Date;
   rendu!: boolean;
   auteur!: string; // Nom de l'élève
-  matiere!: string; // Matière (Base de données, Technologies Web, Grails, etc.)
+  matiere!: string; // Matière
   photomatiere!: string; // URL de l'image associée à la matière
   photoprof!: string; // URL de la photo du prof
   note!: number; // Note sur 20

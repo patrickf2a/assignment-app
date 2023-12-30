@@ -1,14 +1,19 @@
 .tittle-toolbar {
-  background-color:#3498DB;
+  background-color:#607D8B;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .title-center {
   margin: 0 auto;
   color: white;
+  font-size: 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  text-decoration: none;
 }
 mat-toolbar-row {
   justify-content: space-between;
   color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 mat-sidenav-container{
@@ -17,13 +22,19 @@ mat-sidenav-container{
 
 mat-sidenav{
   width: 300px;
-  background-color: #F1F1F1;
+  background-color: #CFD8DC;
 }
 a mat-list-item {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
   font-size: 27px;
+  transition: background-color 0.3s;
+  color: #455A64 ;
+}
+
+a mat-list-item:hover {
+  background-color: #B0BEC5;
 }
 
 mat-icon {

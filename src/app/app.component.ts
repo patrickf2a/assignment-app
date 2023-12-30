@@ -19,7 +19,7 @@ export class AppComponent {
   }
 
   login() {
-    if (!this.authService.loggedInUser) {
+    if (!this.authService.isLoggedIn()) {
       this.islogin=true;
       this.router.navigate(['/login']);
     }
