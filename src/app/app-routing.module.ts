@@ -6,8 +6,11 @@ import { AddAssignmentComponent } from './assignments/add-assignment/add-assignm
 import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
 import { LoginComponent } from './assignments/login/login.component';
 import {CreateAccountComponent} from "./assignments/create-account/create-account.component";
+import {MainPageComponent} from "./assignments/main-page/main-page.component";
 
 const routes: Routes = [
+  { path: '', redirectTo: '/main', pathMatch: 'full' },
+  { path: 'main', component: MainPageComponent },
   { path: 'home',component: AssignmentsComponent },
   { path: 'assignment', component: AssignmentsComponent },
   { path: 'assignment/:id', component: AssignmentDetailComponent },

@@ -1,14 +1,14 @@
 
 <mat-toolbar class="tittle-toolbar">
   <mat-toolbar-row>
-    <!--<button mat-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>-->
+
     <button mat-button (click)="opened=!opened"><mat-icon>menu</mat-icon></button>
-    <a class="title-center" routerLink="" >{{title}}</a>
+    <a class="title-center" routerLink="/main" >{{title}}</a>
     <button mat-button (click)=" InitalBD()" routerLink="/home"><mat-icon>home</mat-icon>Peupler la base</button>
     <button mat-button routerLink="/home"><mat-icon>home</mat-icon>Home</button>
     <button mat-button (click)="login()"><mat-icon>how_to_reg</mat-icon>Login</button>
     <button mat-button (click)="logout()" [disabled]="!islogin"><mat-icon>how_to_reg</mat-icon>Logout</button>
-    <!-- <mat-slide-toggle color="primary" (click)="login()">Login</mat-slide-toggle>-->
+
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -29,6 +29,7 @@
   <mat-sidenav-content>
     <!--Ceci est le contenu principal de l'application-->
     <!--<app-assignments></app-assignments>-->
+
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

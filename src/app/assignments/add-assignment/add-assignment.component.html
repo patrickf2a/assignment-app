@@ -1,5 +1,5 @@
 <form ngForm (submit)="onSubmit($event);assignmentForm.reset()"
-      #assignmentForm class="form"  *ngIf="authService.isAdmin()" >
+      #assignmentForm class="form"  *ngIf="authService.isLoggedIn()" >
   <!--/* on ajoute un field pour mettre le nom du devoir */ -->
   <mat-form-field >
     <input matInput [(ngModel)]="nomDevoir" name="nom" placeholder="Nom du devoir" required>

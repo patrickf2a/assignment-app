@@ -9,7 +9,7 @@ import { AssignmentsService } from './shared/assignments.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = "Mon Assignment app"
+  title = "Assignment app"
   opened = false;
   islogin=false;
 

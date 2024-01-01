@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {AuthService} from "../../shared/auth.service";
 import {AssignmentsService} from "../../shared/assignments.service";
 import { User } from '../User.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-account',
@@ -15,7 +16,8 @@ export class CreateAccountComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService ,
-              private assignmentService : AssignmentsService) { }
+              private assignmentService : AssignmentsService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.createAccountForm = this.formBuilder.group({
@@ -40,6 +42,7 @@ export class CreateAccountComponent implements OnInit {
         .subscribe(reponse => {
         console.log("Reponse du serveur jdd: " + reponse.message);
       });
+      this.router.navigate(['/home']);
     }
   }
 }
