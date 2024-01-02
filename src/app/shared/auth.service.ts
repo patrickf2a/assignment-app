@@ -19,28 +19,12 @@ export class AuthService {
   user!:User;
   admin=false;
 
-  /*
-  users = [
-      { username: 'user', password: 'pass', role: 'user' },
-      { username: 'admin', password: 'pass', role: 'admin' },
-    ];
-*/
-  /*
-
-    isLogged(username: string, password: string) {
-      const user = this.getUser(username, password);
-      if(user) {
-        this.loggedInUser = user;
-        return true;
-      }
-      return false;
-    }
-*/
-
   private handleError(error: HttpErrorResponse) {
-    // Gérer l'erreur ici
     return throwError(error);
   }
+
+  constructor(private http: HttpClient) { }
+
 
   LogIn(userResponse: any) {
     this.user = userResponse.user;
@@ -74,81 +58,4 @@ export class AuthService {
     this.loggedInUser = null;
     console.log("deconnecter avec succes")
   }
-
-
-  /*
-
-  isLogged(username: string, password: string): boolean {
-    if (this.login(username, password)!==undefined) {
-      this.login(username, password).subscribe(
-        (user) => {
-          console.log(user);
-          this.loggedInUser = user;
-          console.log('connecter avec succes ');
-        })
-        return true;
-    }
-        return false;
-        console.log('connexion echouer');
-        //console.log(error);
-    }
-
-
-*/
-
-    /*
-    const user = this.getUser(username, password);
-    if(user) {
-      this.loggedInUser = user;
-      return true;
-    }
-    return false;
-
-  }
-*/
-
-/*
-    getUser(username: string, password: string) {
-      return this.users.find(
-        user => user.username === username && user.password === password
-      );
-    }
-
-*/
-/*
-    isAdmin() {
-      if (this.loggedInUser) {
-        return this.loggedInUser.isadmin === 'admin';
-      }
-      return false;
-    }
-
-/*
-
-    logout() {
-      this.loggedInUser = null;
-      console.log("deconnecter avec succes")
-    }
-
-    getUser(username: string, password: string): Observable<User[]> {
-      return this.http.get<User[]>(this.url);
-}
-
-
-  getUserRole(username: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.url}/${username}/isadmin`);
-    }
-
-    /*
-  isAdmin(){
-    const isUserAdmin = new Promise(
-      (resolve,reject)=>{
-        resolve(this.loggedInUser)
-      }
-    );
-    return isUserAdmin;
-  }
-*/
-
-  constructor(private http: HttpClient) { }
 }

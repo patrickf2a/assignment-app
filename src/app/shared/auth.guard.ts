@@ -15,6 +15,7 @@ export class AuthGuard implements CanActivate {
 
   async canActivate() {
 
+    /*
     const isAdmin = await this.authService.isAdmin();
     if(isAdmin) {
       return true;
@@ -24,5 +25,5 @@ export class AuthGuard implements CanActivate {
     }
 
   }
-
+*/
 }

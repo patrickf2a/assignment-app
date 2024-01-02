@@ -1,37 +1,39 @@
+
+<div class="container">
 <form ngForm (submit)="onSubmit($event);assignmentForm.reset()"
-      #assignmentForm class="form"  *ngIf="authService.isLoggedIn()" >
-  <!--/* on ajoute un field pour mettre le nom du devoir */ -->
+      #assignmentForm class="taille-form"  *ngIf="authService.isLoggedIn()" >
+  <!-- on ajoute un field pour mettre le nom du devoir  -->
   <mat-form-field >
     <input matInput [(ngModel)]="nomDevoir" name="nom" placeholder="Nom du devoir" required>
   </mat-form-field>
 
-  <!--/* on ajoute un field pour le nom de l'élève (auteur) */ -->
+  <!-- on ajoute un field pour le nom de l'élève (auteur)  -->
   <mat-form-field>
     <input matInput [(ngModel)]="auteur" name="auteur" placeholder="Nom de l'élève" required>
   </mat-form-field>
 
-  <!--/* on ajoute un field pour la note sur 20 */ -->
+  <!-- on ajoute un field pour la note sur 20  -->
   <mat-form-field>
     <input matInput [(ngModel)]="note" name="note" placeholder="Note sur 20" required>
   </mat-form-field>
 
-  <!--/* on ajoute un field pour les remarques sur l'assignment */ -->
+  <!-- on ajoute un field pour les remarques sur l'assignment  -->
   <mat-form-field>
     <textarea matInput [(ngModel)]="remarques" name="remarques" placeholder="Remarques sur l'assignment"></textarea>
   </mat-form-field>
 
-  <!--/* on ajoute un field pour la matière */ -->
+  <!-- on ajoute un field pour la matière  -->
   <mat-form-field>
-    <mat-select  [(value)]="valeurselectionneID" (selectionChange)="onOptionSelected($event)" >
+    <mat-select  [(value)]="valeurselectionneID" (selectionChange)="OnMatierechoisi($event)" >
       <mat-option  *ngFor="let matiere of matieres" [value]="matiere.id"  >
-        {{matiere.nom}}&nbsp;  <img [src]="matiere.photoprof">  <img  class="image2" [src]="matiere.photomatiere">
+        {{matiere.nom}}&nbsp;  <img [src]="matiere.photoprof" class="image1">  <img  class="image2" [src]="matiere.photomatiere">
       </mat-option>
     </mat-select>
 
     <!--<input matInput [(ngModel)]="matiere" name="matiere" placeholder="Matière" required>-->
   </mat-form-field>
 
-  <!--/* on ajoute un button pour la date de rendu */-->
+  <!-- on ajoute un button pour la date de rendu -->
   <mat-form-field appearance="fill">
     <input matInput [matDatepicker]="picker"
            placeholder="Date de rendu"
@@ -41,7 +43,7 @@
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
-  <!--/* on ajoute un button pour ajouter le devoir */-->
+  <!-- on ajoute un button pour ajouter le devoir -->
   <button mat-stroked-button
           color="primary"
           [disabled]="(!nomDevoir || !dateRendu || !auteur || !matiere || !photomatiere || !photoprof || !note)"
@@ -50,3 +52,4 @@
     Ajouter un devoir
   </button>
 </form>
+</div>

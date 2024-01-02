@@ -72,7 +72,7 @@ export class AddAssignmentComponent implements OnInit {
     })
   }
 
-  onOptionSelected(event:MatSelectChange) {
+  OnMatierechoisi(event:MatSelectChange) {
     this.valeurselectionneID = event.value;
     this.subjectSelected();
   }

@@ -19,7 +19,7 @@ export class AssignmentsService {
     })
   };
 
-  subjectList: Matiere[] = [];
+  listematiere: Matiere[] = [];
 
   constructor(private logginService:LoggingService,
               private http:HttpClient) { }
@@ -29,6 +29,7 @@ export class AssignmentsService {
   getNewId():number{
     return this.assignments.length+1;
   }
+
   user=User;
 
   url= "http://localhost:8010/api/assignments";
@@ -55,7 +56,6 @@ export class AssignmentsService {
     return this.http.put<Assignment>(this.url,assignment);
     return of("Assignment modifié avec succès");
   }
-
 
   updateRendu(assignment: Assignment):Observable<any>{
     return this.http.put<Assignment>(this.url,assignment);
@@ -93,14 +93,14 @@ export class AssignmentsService {
   }
 
   getmatieres():Observable<Matiere[]>{
-    this.subjectList=bdInitialMatieres;
+    this.listematiere=bdInitialMatieres;
     return of(bdInitialMatieres);
   }
   getmateireById(id:number):Observable<Matiere|undefined>{
-    return of(this.subjectList.find(a=>a.id === id));
+    return of(this.listematiere.find(a=>a.id === id));
   }
   getmatiereByName(name:string):Observable<Matiere|undefined>{
-    return of(this.subjectList.find((a)=>{a.nom == name}));
+    return of(this.listematiere.find((a)=>{a.nom == name}));
   }
   getRandomElement(array: any[]): any {
     const randomIndex = Math.floor(Math.random() * array.length);

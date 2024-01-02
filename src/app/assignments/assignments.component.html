@@ -55,19 +55,19 @@
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="assignments">
 
-      <!-- ID Column -->
+      <!-- ID  -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> ID </th>
         <td mat-cell *matCellDef="let assignment"> {{assignment.id}} </td>
       </ng-container>
 
-      <!-- Nom Column -->
+      <!-- Nom  -->
       <ng-container matColumnDef="nom">
         <th mat-header-cell *matHeaderCellDef> Matiere </th>
         <td mat-cell *matCellDef="let assignment"> {{assignment.nom}} </td>
       </ng-container>
 
-      <!-- ImageMatiere Column -->
+      <!-- ImageMatiere  -->
       <ng-container matColumnDef="photomatiere">
         <th mat-header-cell *matHeaderCellDef> Photo de la Matiere </th>
         <td mat-cell *matCellDef="let assignment">
@@ -75,7 +75,7 @@
         </td>
       </ng-container>
 
-      <!-- PhotoProf Column -->
+      <!-- PhotoProf  -->
       <ng-container matColumnDef="photoprof">
         <th mat-header-cell *matHeaderCellDef> Photo du Professeur </th>
         <td mat-cell *matCellDef="let assignment">
@@ -83,32 +83,32 @@
         </td>
       </ng-container>
 
-      <!-- Author Column -->
+      <!-- Author  -->
       <ng-container matColumnDef="auteur">
         <th mat-header-cell *matHeaderCellDef> Nom de l'éleve </th>
         <td mat-cell *matCellDef="let assignment"> {{assignment.auteur}} </td>
       </ng-container>
 
-      <!-- DateDeRendu Column -->
+      <!-- DateDeRendu  -->
       <ng-container matColumnDef="dateDeRendu">
         <th mat-header-cell *matHeaderCellDef> Date de Rendu </th>
         <td mat-cell *matCellDef="let assignment"> {{assignment.dateDeRendu | date}} </td>
       </ng-container>
 
-      <!-- Rendu Column -->
+      <!-- Rendu  -->
       <ng-container matColumnDef="rendu">
         <th mat-header-cell *matHeaderCellDef> Rendu </th>
         <td mat-cell *matCellDef="let assignment"> {{assignment.rendu ? 'Oui' : 'Non'}} </td>
       </ng-container>
 
-      <!-- Note Column -->
+      <!-- Note  -->
       <ng-container matColumnDef="Note">
         <th mat-header-cell *matHeaderCellDef> Note </th>
         <td mat-cell *matCellDef="let assignment"> {{assignment.note}} </td>
 
       </ng-container>
 
-      <!-- Remarques Column -->
+      <!-- Remarques  -->
       <ng-container matColumnDef="Remarques">
         <th mat-header-cell *matHeaderCellDef> Remarques </th>
         <td mat-cell *matCellDef="let assignment"> {{assignment.remarques}} </td>

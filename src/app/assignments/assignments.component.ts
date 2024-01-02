@@ -137,19 +137,6 @@ export class AssignmentsComponent implements OnInit{
 
   }
 
-
-  /*
-// Ajout d'une méthode pour vérifier si l'assignment a été noté avant de le marquer comme "rendu"
-
-  marquerCommeRendu() {
-    if (this.note !== undefined) {
-      this.rendu = true;
-    } else {
-      throw new Error("L'assignment doit être noté avant de pouvoir être marqué comme 'rendu'.");
-    }
-  }
-*/
-
   // Pour la pagination
 
   PremierPage(){

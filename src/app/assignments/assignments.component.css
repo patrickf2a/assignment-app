@@ -45,30 +45,13 @@ img {
   margin-bottom: 20px;
 }
 
-/*
-.ajouterBtn button {
-  background-color: #009688;
-  color: white;
-  padding: 10px 20px;
-  margin-bottom: 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-*/
+
 .ajouterBtn {
   margin-right: 10px; /* Espace entre le bouton Ajouter et les autres éléments */
 }
 .search-container, .filter-button-container {
   margin: 0 10px; /* Espace autour des éléments de recherche et de filtre */
 }
-
-/*
-.ajouterBtn button:hover {
-  background-color: #00796b;
-}
-*/
 
 .pagination-container {
   display: flex;

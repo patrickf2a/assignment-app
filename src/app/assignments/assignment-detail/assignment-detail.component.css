@@ -42,14 +42,14 @@ img:hover {
 
 p {
   margin: 10px 0;
-  color: #555; /* Couleur de texte légèrement plus foncée pour une meilleure lisibilité */
-  font-size: 1.1rem; /* Taille de police légèrement plus grande */
+  color: #555;
+  font-size: 1.1rem;
 }
 
 #bottom {
   display: flex;
   justify-content: space-evenly;
-  width: 100%; /* Utiliser toute la largeur disponible */
+  width: 100%;
   gap: 40px;
   margin-top: 30px;
 }
