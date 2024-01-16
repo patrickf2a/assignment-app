@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable} from "rxjs";
+import {Observable , Subject} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import { User } from '../assignments/User.model';
 import { catchError } from 'rxjs/operators';
@@ -14,6 +14,8 @@ import { tap } from 'rxjs/operators';
 export class AuthService {
 
   loggedInUser: boolean | null = null;
+  loggedInUserLog = new Subject<boolean>();
+
   url= "http://localhost:8010/api/user/authenticate";
 
   user!:User;
@@ -29,9 +31,11 @@ export class AuthService {
   LogIn(userResponse: any) {
     this.user = userResponse.user;
     this.loggedInUser = true;
+    this.loggedInUserLog.next(true); // on s'en sers pour le boutton deconnexion
     this.admin = this.user.isadmin;
     console.log("admin service", this.admin);
     console.log("login service", this.loggedInUser);
+    console.log("Est logé ", this.loggedInUser);
   }
 
 
@@ -48,6 +52,7 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     return this.loggedInUser !== null;
+
   }
 
   isAdmin() {
@@ -57,5 +62,10 @@ export class AuthService {
   logout() {
     this.loggedInUser = null;
     console.log("deconnecter avec succes")
+  }
+
+  // nous permet de voir si on est log ou pas
+  ViewLoggedInUser(): Observable<boolean> {
+    return this.loggedInUserLog.asObservable();
   }
 }

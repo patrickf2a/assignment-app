@@ -6,8 +6,8 @@
     <a class="title-center" routerLink="/main" >{{title}}</a>
     <button mat-button (click)=" InitalBD()" routerLink="/home"><mat-icon>home</mat-icon>Peupler la base</button>
     <button mat-button routerLink="/home"><mat-icon>home</mat-icon>Home</button>
-    <button mat-button (click)="login()" [disabled]="islogin"><mat-icon>how_to_reg</mat-icon>Login</button>
-    <button mat-button (click)="logout()" [disabled]="!islogin"><mat-icon>how_to_reg</mat-icon>Logout</button>
+    <button mat-button (click)="login()" *ngIf="!islogin"><mat-icon>how_to_reg</mat-icon>Login</button>
+    <button mat-button (click)="logout()" *ngIf="islogin"><mat-icon>how_to_reg</mat-icon>Logout</button>
 
   </mat-toolbar-row>
 </mat-toolbar>

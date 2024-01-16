@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './shared/auth.service';
 import { Router } from '@angular/router';
 import { AssignmentsService } from './shared/assignments.service';
@@ -8,22 +8,27 @@ import { AssignmentsService } from './shared/assignments.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = "Assignment app"
+export class AppComponent implements OnInit {
+  title = "Assignment app";
   opened = false;
-  islogin=false;
+  islogin = false;
 
-  constructor(private authService: AuthService,
-              private router: Router,
-              private assignmentService: AssignmentsService) {
+  constructor(private authService: AuthService, private router: Router, private assignmentService: AssignmentsService) {
+  }
+
+  ngOnInit(): void {
+    // Utilisez watchLoggedInUser() pour observer les changements d'état de connexion
+    this.authService.ViewLoggedInUser().subscribe((loggedIn: boolean) => {
+      this.islogin = loggedIn;
+      console.log("app component", this.islogin);
+    });
   }
 
   login() {
     if (!this.authService.isLoggedIn()) {
-      this.islogin=true;
+      //this.islogin = true;
       this.router.navigate(['/login']);
     }
-    return this.islogin;
   }
 
   logout() {
@@ -32,15 +37,10 @@ export class AppComponent {
     this.router.navigate(['/login']);
   }
 
-  InitalBD(){
-    this.assignmentService.peuplerBD().
-    subscribe(() => {
+  InitalBD() {
+    this.assignmentService.peuplerBD().subscribe(() => {
       console.log("BD initialisée");
-      this.router.navigate(['/home'],{replaceUrl:true});
-      })
-    }
-
+      this.router.navigate(['/home'], { replaceUrl: true });
+    });
+  }
 }
-
-
-

@@ -1,41 +1,146 @@
+/* Style de base pour le conteneur */
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.taille-form {
-  max-width: 1000px;
-  width: 100%;
+  max-width: 800px;
   margin: auto;
   padding: 20px;
-  background-color: #f5f5f5;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
 }
 
-.taille-form mat-form-field {
+/* Style des étapes du formulaire */
+.mat-vertical-stepper {
+  background-color: #fff;
+  color: #333;
+}
+
+/* Style des champs du formulaire */
+mat-form-field {
   width: 100%;
   margin-bottom: 20px;
 }
 
-.taille-form textarea.matInput {
-  height: 100px;
+/* Style des inputs et des textareas */
+input[matInput], textarea[matInput] {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
 }
 
-.taille-form button[mat-raised-button] {
-  width: 100%;
-  margin-top: 20px;
+/* Style des labels pour plus de clarté */
+mat-label {
+  color: #333;
+  font-weight: bold;
 }
 
+/* Style des boutons */
+button[mat-button], button[mat-stroked-button] {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 25px;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button[mat-button]:hover, button[mat-stroked-button]:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Style pour les boutons désactivés */
+button[mat-button][disabled], button[mat-stroked-button][disabled] {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Style des options du select */
+mat-option {
+  color: #333;
+  font-size: 16px;
+}
+
+/* Style pour les images dans les options du select */
 .image1, .image2 {
-  width: 45px;
-  height: 45px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  object-fit: cover;
-  vertical-align: middle;
+  margin-right: 5px;
+}
+
+/* Style pour le résumé de l'assignment */
+div[ngIf] h3 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+div[ngIf] p {
+  color: #555;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Style des boutons de navigation dans le stepper */
+.mat-stepper-horizontal, .mat-stepper-vertical {
+  background-color: transparent;
+}
+
+/* Style des étiquettes des étapes (stepper) pour les rendre plus visibles */
+.mat-step-label {
+  color: #007BFF;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Style pour les boutons de soumission finale */
+button[mat-stroked-button] {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 25px;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+button[mat-stroked-button]:hover {
+  background-color: #218838;
+}
+
+/* Style pour les messages d'erreur ou d'information */
+.mat-error, .mat-hint {
+  font-size: 14px;
+  color: #dc3545;
+}
+
+/* Style pour les icônes dans les champs de formulaire */
+.mat-form-field .mat-icon {
+  color: #007BFF;
+}
+
+/* Style pour le curseur sur les éléments interactifs */
+button[mat-button], mat-option, mat-datepicker-toggle {
+  cursor: pointer;
+}
+
+/* Style pour les titres des formulaires */
+h1, h2, h3, h4, h5, h6 {
+  color: #333;
+  margin-top: 0;
+}
+
+/* Style pour ajuster la hauteur des lignes des textes pour une meilleure lisibilité */
+body, input, button, select, textarea {
+  line-height: 1.5;
+}
+
+/* Style pour la date du datepicker */
+mat-datepicker-toggle {
+  border: none;
+  padding: 0;
 }
 
