@@ -89,7 +89,7 @@ div[ngIf] p {
   background-color: transparent;
 }
 
-/* Style des étiquettes des étapes (stepper) pour les rendre plus visibles */
+/* Style des étiquettes des étapes  */
 .mat-step-label {
   color: #007BFF;
   font-size: 18px;

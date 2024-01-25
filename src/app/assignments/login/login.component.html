@@ -1,18 +1,17 @@
 <div class="form-container">
+  <h2 class="form-title">Connexion</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="username"><mat-icon>account_circle</mat-icon> Nom d'utilisateur</label>
+      <input type="text" id="username" formControlName="username" required>
+    </div>
 
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="username">Nom d'utilisateur</label>
-    <input type="text" id="username" placeholder="user ou alors admin" formControlName="username" required>
-  </div>
+    <div class="form-group">
+      <label for="password"><mat-icon>lock</mat-icon> Mot de passe</label>
+      <input type="password" id="password" formControlName="password" required>
+    </div>
 
-  <div class="form-group">
-    <label for="password">Mot de passe</label>
-    <input type="password" id="password" placeholder="pass" formControlName="password" required>
-  </div>
-
-  <button type="submit" [disabled]="!loginForm.valid">Connecter</button>
-  <button routerLink="/create-account">Creer un compte </button>
-</form>
-
+    <button type="submit" [disabled]="!loginForm.valid">Connecter</button>
+    <button routerLink="/create-account">Créer un compte</button>
+  </form>
 </div>

@@ -35,7 +35,7 @@ export class AssignmentsComponent implements OnInit{
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   // pour le table
-  displayedColumns: string[] = ['id', 'nom', 'photomatiere','photoprof','auteur','dateDeRendu','rendu', 'Note','Remarques'];
+  displayedColumns: string[] = ['id', 'nom', 'photomatiere','photoprof','auteur','dateDeRendu','rendu', 'Note','Remarques','Recherche'];
   //dataSource!: MatTableDataSource<Assignment>;
   dataSource= new MatTableDataSource(this.assignments);
   @ViewChild(MatSort) sort!:MatSort;
@@ -171,19 +171,6 @@ export class AssignmentsComponent implements OnInit{
     this.getAssignmentsPagines();
   }
 
-  /*
-  OnMatiereFiltre(matiere:string
-    this.matiereFilter = matiere;
-    this.getAssignmentsPagines();
-  }
-
-  OnProfesseurFiltre(professeur:string) {
-    this.professeurFilter = professeur;
-    this.getAssignmentsPagines();
-  }
-
-
-   */
 
   // Pour la recherche
   OnRecherche(event: Event) {

@@ -4,10 +4,16 @@
 
     <button mat-button (click)="opened=!opened"><mat-icon>menu</mat-icon></button>
     <a class="title-center" routerLink="/main" >{{title}}</a>
-    <button mat-button (click)=" InitalBD()" routerLink="/home"><mat-icon>home</mat-icon>Peupler la base</button>
+    <button mat-button (click)="InitalBD()" routerLink="/home"><mat-icon>cloud_upload</mat-icon>Peupler la base</button>
+
     <button mat-button routerLink="/home"><mat-icon>home</mat-icon>Home</button>
     <button mat-button (click)="login()" *ngIf="!islogin"><mat-icon>how_to_reg</mat-icon>Login</button>
-    <button mat-button (click)="logout()" *ngIf="islogin"><mat-icon>how_to_reg</mat-icon>Logout</button>
+    <div *ngIf="islogin" class="user-info">
+      <mat-icon class="user-icon">account_circle</mat-icon>
+      <span class="username">{{ username }}</span>
+      <button mat-button (click)="logout()" class="logout-button"><mat-icon>how_to_reg</mat-icon>Logout</button>
+    </div>
+
 
   </mat-toolbar-row>
 </mat-toolbar>

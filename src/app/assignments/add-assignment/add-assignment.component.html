@@ -1,6 +1,6 @@
 <div class="container" *ngIf="authService.isLoggedIn()">
   <mat-vertical-stepper linear #stepper>
-    <mat-step [completed]="step1Completed">
+    <mat-step [completed]="etape1">
       <ng-template matStepLabel>Détails de l'Assignment</ng-template>
       <form [formGroup]="firstFormGroup">
 
@@ -19,7 +19,7 @@
       </form>
     </mat-step>
 
-    <mat-step [completed]="step2Completed">
+    <mat-step [completed]="etape2">
       <ng-template matStepLabel>Deuxième étape</ng-template>
       <form [formGroup]="secondFormGroup">
         <!-- Note sur 20 -->
@@ -36,7 +36,7 @@
         <mat-form-field>
           <mat-select formControlName="matiere" placeholder="La matière "(selectionChange)="OnMatierechoisi($event)">
             <mat-option *ngFor="let matiere of matieres" [value]="matiere.id">
-              {{matiere.nom}}&nbsp; <img [src]="matiere.photoprof" class="image1">
+              {{matiere.nom}} <img [src]="matiere.photoprof" class="image1">
               <img class="image2" [src]="matiere.photomatiere">
             </mat-option>
           </mat-select>
@@ -50,7 +50,7 @@
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
-        <!-- Bouton pour passer à l'étape suivante ou revenir en arrière (désactivé tant que le formulaire n'est pas valide) -->
+        <!-- Bouton pour passer à l'étape suivante ou revenir en arrière -->
         <button mat-button matStepperPrevious>Retour</button>
         <button mat-button matStepperNext [disabled]="!secondFormGroup.valid">Suivant</button>
       </form>
@@ -59,14 +59,14 @@
     <mat-step>
       <ng-template matStepLabel>Résumé et Confirmation</ng-template>
       <!-- Afficher un résumé des informations saisies -->
-      <div *ngIf="step1Completed && step2Completed">
-        <h3>Résumé du devoir </h3>
-        <p><strong>Nom du devoir:</strong> {{ firstFormGroup.value.nom }}</p>
-        <p><strong>Nom de l'élève:</strong> {{ firstFormGroup.value.auteur }}</p>
-        <p><strong>Note sur 20:</strong> {{ secondFormGroup.value.note }}</p>
-        <p><strong>Remarques:</strong> {{ secondFormGroup.value.remarques }}</p>
-        <p><strong>Matière:</strong> {{ secondFormGroup.value.matiere }}</p>
-        <p><strong>Date de rendu:</strong> {{ secondFormGroup.value.dateDeRendu | date }}</p>
+      <div *ngIf="etape1 && etape2">
+        <h3>Résumé du devoir : </h3>
+        <p><strong>Nom du devoir :</strong> {{ firstFormGroup.value.nom }}</p>
+        <p><strong>Nom de l'élève :</strong> {{ firstFormGroup.value.auteur }}</p>
+        <p><strong>Note sur 20 :</strong> {{ secondFormGroup.value.note }}</p>
+        <p><strong>Remarques :</strong> {{ secondFormGroup.value.remarques }}</p>
+        <p><strong>Matière :</strong> {{ secondFormGroup.value.matiere }}</p>
+        <p><strong>Date de rendu :</strong> {{ secondFormGroup.value.dateDeRendu | date }}</p>
       </div>
 
       <!-- Bouton de soumission -->

@@ -5,7 +5,7 @@
   <!-- on ajoute un field pour mettre le nom du devoir  -->
   <mat-form-field>
     <input matInput
-           [(ngModel)]="NomDevoir" name="nom" placeholder="Edition du nom " required>
+           [(ngModel)]="NomDevoir" name="nom" placeholder="Nom du devoir " required>
   </mat-form-field>
 
   <!-- on ajoute un button pour la date de rendu -->
@@ -18,14 +18,18 @@
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
-  <!-- champ pour le nom de l'élève (auteur)  -->
+  <!-- champ pour le nom de l'élève  -->
   <mat-form-field>
     <input matInput [(ngModel)]="auteur" name="auteur" placeholder="Nom de l'élève" required>
   </mat-form-field>
 
   <!-- champ pour la matière  -->
   <mat-form-field>
-    <input matInput [(ngModel)]="matiere" name="matiere" placeholder="Matière" required>
+    <mat-select  [(value)]="valeurselectionneID" placeholder="La matiere" (selectionChange)="OnMatierechoisi($event)" >
+      <mat-option  *ngFor="let matiere of matieres" [value]="matiere.id"  >
+        {{matiere.nom}} <img [src]="matiere.photoprof" class="image1">  <img  class="image2" [src]="matiere.photomatiere">
+      </mat-option>
+    </mat-select>
   </mat-form-field>
 
   <!-- champ pour la note sur 20  -->

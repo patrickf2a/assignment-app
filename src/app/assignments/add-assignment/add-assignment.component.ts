@@ -52,11 +52,11 @@ export class AddAssignmentComponent implements OnInit {
     }
   }
 
-  get step1Completed(): boolean {
+  get etape1(): boolean {
     return this.firstFormGroup?.valid || false;
   }
 
-  get step2Completed(): boolean {
+  get etape2(): boolean {
     return this.secondFormGroup?.valid || false;
   }
 
@@ -88,7 +88,7 @@ export class AddAssignmentComponent implements OnInit {
     newAssignment.rendu = false;
 
     this.assignmentsService.addAssignment(newAssignment).subscribe(response => {
-      console.log("Response from server: " + response.message);
+      console.log("Respone du server: " + response.message);
       this.router.navigate(['/home']);
     });
   }

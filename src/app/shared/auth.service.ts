@@ -68,4 +68,10 @@ export class AuthService {
   ViewLoggedInUser(): Observable<boolean> {
     return this.loggedInUserLog.asObservable();
   }
+
+  // pour afficher user dans la toolbar
+  getUsername(): string {
+    return this.user ? this.user.nom : '';
+  }
+
 }

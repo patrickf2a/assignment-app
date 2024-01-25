@@ -106,7 +106,6 @@ export class AssignmentsService {
     const randomIndex = Math.floor(Math.random() * array.length);
     return array[randomIndex];
   }
-
   createUser(user : User): Observable<any> {
     return this.http.post<User>(this.url2,user,this.httpOptions);
     //return of("User crée avec succès");

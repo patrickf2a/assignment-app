@@ -1,15 +1,16 @@
 .tittle-toolbar {
-  background-color:#607D8B;
+  background-color: #455A64;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .title-center {
   margin: 0 auto;
   color: white;
-  font-size: 20px;
+  font-size: 24px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   text-decoration: none;
 }
+
 mat-toolbar-row {
   justify-content: space-between;
   color: white;
@@ -24,6 +25,7 @@ mat-sidenav{
   width: 300px;
   background-color: #CFD8DC;
 }
+
 a mat-list-item {
   display: flex;
   align-items: center;
@@ -36,8 +38,33 @@ a mat-list-item {
 a mat-list-item:hover {
   background-color: #B0BEC5;
 }
-
 mat-icon {
   margin-right: 16px;
   font-size: 24px;
+}
+
+mat-sidenav-content {
+  background-color: #e3e5e8 ;
+
+}
+
+
+.user-icon {
+  font-size: 24px;
+  margin-right: 5px;
+}
+
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+
+.username {
+  margin-right: 10px;
+}
+
+.logout-button {
+  margin-left: 10px;
 }

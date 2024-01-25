@@ -12,21 +12,25 @@ export class AppComponent implements OnInit {
   title = "Assignment app";
   opened = false;
   islogin = false;
+  username = '';
 
   constructor(private authService: AuthService, private router: Router, private assignmentService: AssignmentsService) {
   }
 
   ngOnInit(): void {
-    // Utilisez watchLoggedInUser() pour observer les changements d'état de connexion
     this.authService.ViewLoggedInUser().subscribe((loggedIn: boolean) => {
       this.islogin = loggedIn;
+      if (this.islogin) {
+        this.username = this.authService.getUsername();
+      } else {
+        this.username = '';
+      }
       console.log("app component", this.islogin);
     });
   }
 
   login() {
     if (!this.authService.isLoggedIn()) {
-      //this.islogin = true;
       this.router.navigate(['/login']);
     }
   }
@@ -34,6 +38,7 @@ export class AppComponent implements OnInit {
   logout() {
     this.authService.logout();
     this.islogin = false;
+    this.username = '';
     this.router.navigate(['/login']);
   }
 

@@ -3,6 +3,8 @@ import { Assignment } from "../assignment.model";
 import { AssignmentsService } from "../../shared/assignments.service";
 import { Router } from "@angular/router";
 import { ActivatedRoute } from '@angular/router';
+import {MatSelectChange} from "@angular/material/select";
+import {Matiere} from "../Matiere.model";
 
 @Component({
   selector: 'app-edit-assignment',
@@ -19,6 +21,9 @@ export class EditAssignmentComponent implements OnInit {
   photoprof!: string;
   note!: number;
   remarques!: string;
+  matieres: Matiere[] = [];
+
+  valeurselectionneID:number=0;
 
   constructor(private assignmentService: AssignmentsService,
               private route: ActivatedRoute,
@@ -30,6 +35,9 @@ export class EditAssignmentComponent implements OnInit {
     console.log(this.route.snapshot.queryParams);
     console.log("Fragment : ");
     console.log(this.route.snapshot.fragment);
+    this.assignmentService.getmatieres().subscribe(matieres => {
+      this.matieres = matieres;
+    });
   }
 
   getAssignment() {
@@ -66,4 +74,21 @@ export class EditAssignmentComponent implements OnInit {
         this.router.navigate(["/home"]);
       });
   }
+
+  subjectSelected() {
+    this.assignmentService.getmateireById(this.valeurselectionneID).subscribe((matiere) => {
+      if (matiere) {
+        this.matiere = matiere.nom;
+        this.photomatiere = matiere.photomatiere;
+        this.photoprof = matiere.photoprof;
+      }
+    })
+  }
+
+  OnMatierechoisi(event:MatSelectChange) {
+    this.valeurselectionneID = event.value;
+    this.subjectSelected();
+  }
+
+
 }

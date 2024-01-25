@@ -1,54 +1,26 @@
 <!--<main class="container" *ngIf="!FormVisible"> Ca sert plus a rien -->
 <main class="container">
-
-  <!-- On va remplacer ceci
-<button class="ajouterBtn" mat-flat-button color="accent"
-        (click)="onAddAssignmentBtnClick()"> Ajouter un devoir
-</button> -->
-
   <div class="Button">
-  <div class="ajouterBtn">
-    <a routerLink="/add-assignment">
-      <button class="ajouterBtn"
-              mat-flat-button color="accent"
-              (click)="onAddAssignmentBtnClick()">Ajouter un devoir
-      </button>
-    </a>
-  </div>
-
-<!--
-
-<mat-list *ngFor="let assigment of assignments"
-    [ngClass]="{'rendu':assigment.rendu, 'nonRendu': !assigment.rendu}">
-  <a routerLink="/assignment/{{assigment.id}}">{{assigment.nom}}</a>
-
-  <mat-list-item (click)="assignmentClique(assigment)">
-      <p appRendu *ngIf="assigment.rendu;else nonRendu">
-        Devoir intitulé {{assigment.nom}}, à été rendu le : {{assigment.dateDeRendu | date}}</p>
-    <ng-template #nonRendu>
-      <p>
-        Le Devoir intitulé {{assigment.nom}} n'a pas été rendu.
-      </p>
-    </ng-template>
-      </mat-list-item>
-</mat-list>
--->
-  <div class="search-container">
-    <mat-form-field appearance="fill">
-      <mat-label>Rechercher un assignment</mat-label>
-      <input matInput (keyup)="OnRecherche($event)" placeholder="Nom de l'assignment">
-    </mat-form-field>
-  </div>
-
-  <div class="filter-button-container">
-    <button mat-button [matMenuTriggerFor]="filterMenu" >Filtres</button>
-    <mat-menu #filterMenu="matMenu">
-      <div class="filter-options">
-        <mat-checkbox (change)="OnRenduFiltre($event)">Devoirs Rendus</mat-checkbox>
-
+    <div class="left-buttons">
+      <!-- Ajouter un devoir -->
+      <div class="ajouterBtn">
+        <a routerLink="/add-assignment">
+          <button mat-flat-button color="accent" (click)="onAddAssignmentBtnClick()">
+            <mat-icon>add</mat-icon>Ajouter un devoir
+          </button>
+        </a>
       </div>
-    </mat-menu>
-  </div>
+    </div>
+
+    <!-- Filtres -->
+    <div class="filter-button-container">
+      <button class="btn filtres" mat-button [matMenuTriggerFor]="filterMenu" >Filtres</button>
+      <mat-menu #filterMenu="matMenu">
+        <div class="filter-options">
+          <mat-checkbox (change)="OnRenduFiltre($event)">Devoirs Rendus</mat-checkbox>
+        </div>
+      </mat-menu>
+    </div>
 
   </div>
 
@@ -63,11 +35,11 @@
 
       <!-- Nom  -->
       <ng-container matColumnDef="nom">
-        <th mat-header-cell *matHeaderCellDef> Matiere </th>
+        <th mat-header-cell *matHeaderCellDef> Nom Du Devoir </th>
         <td mat-cell *matCellDef="let assignment"> {{assignment.nom}} </td>
       </ng-container>
 
-      <!-- ImageMatiere  -->
+      <!-- Photomatiere  -->
       <ng-container matColumnDef="photomatiere">
         <th mat-header-cell *matHeaderCellDef> Photo de la Matiere </th>
         <td mat-cell *matCellDef="let assignment">
@@ -83,7 +55,7 @@
         </td>
       </ng-container>
 
-      <!-- Author  -->
+      <!-- l'auteur  -->
       <ng-container matColumnDef="auteur">
         <th mat-header-cell *matHeaderCellDef> Nom de l'éleve </th>
         <td mat-cell *matCellDef="let assignment"> {{assignment.auteur}} </td>
@@ -114,13 +86,25 @@
         <td mat-cell *matCellDef="let assignment"> {{assignment.remarques}} </td>
       </ng-container>
 
+      <!-- Champ de recherche -->
+      <ng-container matColumnDef="Recherche">
+        <th mat-header-cell *matHeaderCellDef>
+          <div class="search-container">
+            <mat-form-field appearance="fill">
+              <mat-label>Rechercher un assignment</mat-label>
+              <input class="search-input" matInput (keyup)="OnRecherche($event)" placeholder="Nom de l'assignment">
+            </mat-form-field>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="">
+        </td>
+      </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr routerLink="/assignment/{{row.id}}" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
     </table>
   </div>
-
 
   <div class="pagination-container">
 
@@ -139,18 +123,4 @@
                    (page)="onPageChange($event)">
     </mat-paginator>
   </div>
-
-
-
-
-  <!--
-<app-assignment-detail [assignmentTransmis]="assignementSelectionne"
-(assignmentRendu)="OnRenduAssignmentDelete($event)"
-></app-assignment-detail> -->
-
 </main>
-
-<!--
-<app-add-assignment *ngIf="FormVisible" (nouvelAssignment)="onNouvelAssignment($event)" ></app-add-assignment>
-
--->
