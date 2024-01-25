@@ -9,7 +9,7 @@ import { AssignmentsService } from './shared/assignments.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = "Assignment app";
+  title = "Assignment Application";
   opened = false;
   islogin = false;
   username = '';

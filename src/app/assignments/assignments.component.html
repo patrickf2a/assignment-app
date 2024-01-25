@@ -118,8 +118,9 @@
     </div>
 
     <mat-paginator [length]="totalDocs"
-                   [pageSize]="limit"
+                   [pageSize]="userPageSize"
                    [pageIndex]="page - 1"
+                   [pageSizeOptions]="[5, 10, 15, 20]"
                    (page)="onPageChange($event)">
     </mat-paginator>
   </div>

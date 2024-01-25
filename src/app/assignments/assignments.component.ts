@@ -32,6 +32,8 @@ export class AssignmentsComponent implements OnInit{
   nextPage!:number;
   prevPage!:number;
 
+  userPageSize: number = 10;
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   // pour le table
@@ -42,8 +44,6 @@ export class AssignmentsComponent implements OnInit{
 
   // Pour le filtre
   filterRendu = false;
-  filterprofesseur="";
-  filtermatiere="";
 
   // Pour la recherche
   searchValue = '';
@@ -64,7 +64,6 @@ export class AssignmentsComponent implements OnInit{
     this.getAssignmentsPagines();
   }
 );
-
   }
 
   // Pour la pagination
@@ -97,6 +96,7 @@ export class AssignmentsComponent implements OnInit{
   onPageChange(event: PageEvent) {
     this.page = event.pageIndex + 1;
     this.limit = event.pageSize;
+    this.userPageSize = event.pageSize; // Ajoutez cette ligne
     this.getAssignmentsPagines();
   }
 
