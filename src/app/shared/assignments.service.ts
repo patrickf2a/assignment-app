@@ -32,8 +32,10 @@ export class AssignmentsService {
 
   user=User;
 
-  url= "http://localhost:8010/api/assignments";
-  url2= "http://localhost:8010/api/user";
+  //url= "http://localhost:8010/api/assignments";
+  url= "https://fernandes-brandi-application.onrender.com/api/assignments"
+  url2= "https://fernandes-brandi-application.onrender.com/api/users"
+  //url2= "http://localhost:8010/api/user";
 
   getAssignments(): Observable<Assignment[]>{
 
