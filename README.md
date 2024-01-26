@@ -1,41 +1,70 @@
-# Angular : rendu n°2
-Repository où déposer le projet n°2 Angular
+## Projet : Assignment Application
 
-### Nom[1] : FERNANDES DE FARIA
+Lien git du backend : https://github.com/patrickf2a/Projet-Angular
 
-### Prénom[2] :Patrick
+Lien du render : https://fernandes-brandi-application-front.onrender.com
 
-## A faire[3]
-- [x] Suivre le cours jusqu'à la page 180
-- [x] Intégrer toolbar et navbar du rendu n°1
-- [x] Identification par **login/password**
-  - ajouter un tableau de login/password/role (avec rôle qui est soit **user** soit **admin**) dans le service d'authentification
-  - modifier le code pour avoir `isLogged()` **ET** `isAdmin()` au lieu de juste `isAdmin()`
-- [x] Au lieu du slider `LogIn`, ajouter un bouton connecter (avec une *mat-icon* adaptée) qui amène à un composant avec un formulaire de connexion
-- [x] Gestion des droits :
-  - L'admin peut éditer et effacer les assignment
-  - Le user peut voir le détail des assignment
-  - Si on n'est pas logué on ne peut ni voir le détail, ni éditer
+## Auteur : FERNANDES DE FARIA Patrick et BRANDI Julien
+
+## Conseils d'utilisation :
+
+Apercu de l'application apres lancement :
+
+- La page d'accueil s'affiche avec une card de presentation .
+- Une toolbar est presente avec plusieurs boutons permettent la navigation entre les component : 
+  - Le boutton "Home" qui renvoi vers la page principal.
+  - Le boutton "Peupler la base " qui permet de peupler la base de données avec des assignments.
+  - Le boutton "Login" qui permet de se connecter a un compte utilisateur.
+  
+- Pour commncer la navigation il faut cliquer sur le bouton home qui renvoi vers la page contenant la liste des assignments.
+- Sur cette page on peut voir la liste des assignments dans une table avec leur titre, la matiere avec la photo de la matiere,la photo du professeur en charge de cette matiere, la date de rendu et la note et une remarque.
+- Un Bouton "Ajouter un devoir" permet d'ajouter un devoir a l'aide d'un formulaire stepper.
+- Un bouton " filtres" qui permet de selectionner les assignments rendus ou non rendus.
+- Un champ de recherche permet de rechercher un assignment par son titre.
+- Un bouton "Premiere page" qui permet de revenir a la premiere page de la liste des assignments.
+- Un bouton "Derniere page" qui permet d'aller a la derniere page de la liste des assignments.
+- Il est également possible de choisir le nombre d'assignments par page.
+- Des boutons ">" et "<" permettent de naviguer entre les pages.
 
 
-[^1]: à remplir
-[^2]: à remplir
-[^3]: vous pouvez cocher les tâches qui ont été faites en utilisant la syntaxe `[x]` dans le markdown
+## Gestion de la connexion 
+
+Pour la connexion nous avons utilisé une collection dans Mongodb qui contient les utilisateurs avec leur username, leur password et leur role.
+Pour se connecter il faut cliquer sur le bouton "login" en haut a droite de la page.
+Une fois sur la page de connexion, un formulaire de connexion apparait il faut rentrer les identifiants suivant :
+  - Nom d'utilisateur : Par exemple (admin ou user)
+  - Mot de passe : pass
+
+Il suffit de cliquer sur le bouton "Se connecter" pour se connecter.
+Si les identifiants sont incorrects un message d'erreur apparait.
+
+Il est également possible de se créér un compte si ce n'est pas deja fait en cliquant sur le bouton "Créer un compte" en bas du formulaire de connexion.
+Une fois sur la page de création de compte il faut rentrer les informations suivantes :
+
+  - Nom d'utilisateur : Par exemple (admin ou user)
+  - Mot de passe : pass
+  - Il suffit de cliquer sur la checkbox si on veut etre admin ou non.
+
+L'utilisateur est libre de saisir les informations qu'il souhaite.
+
+Une fois connecter l'utilisateur peut se deconnecter a l'aide du bouton "logout" qui apparaitra en haut à droite de la page. Il sera redirigé vers la page d'accueil.
 
 
+## Condition pour acceder au contenue de l'application
 
-Conseils d'utilisation : 
-- Pour lancer le projet, il faut lancer la commande `ng serve` dans le terminal
-- Ensuite quand l'application est lancer pour pourvoir voir la liste des devoirs c'est depuis la sidenav en cliquant sur "Liste des devoirs"
-- Une fois dessus quand on clique sur un devoir on ne peut voir les détails du devoir car on est n'est pas connecter.
-- Pour se connecter il faut cliquer sur le bouton "loggin" en haut à droite de la page.
-- Une fois sur la page de connexion il faut rentrer les identifiants suivant : 
-  - username : admin ou user
-  - password : pass
+- Si l'utilisateur est connecté en tant que admin il peut :
+  - Voir la liste des assignments
+  - Voir les détails d'un assignment en cliquant dessus
+  - Ajouter un assignment
+  - Modifier un assignment
+  - Supprimer un assignment
+  - Se déconnecter
 
-- Une fois connecter on peut voir les détails du devoir et on peut aussi modifier ou supprimer le devoir si on est admin.
-- Si on est pas connecter en tant que admin mais en tant que user on ne peut pas modifier ou supprimer le devoir, on ne peut que consulter les details du devoir et cliquer sur devoir rendu ( qui renvoi le devoir surligne en jaune) ou alors supprimer le rendu si on le souhaite qui rend le devoir à son état d'origine.
-- Lorsqu'on souhaite changer d'utilisateur il faut cliquer sur le bouton "logout" en haut à droite de la page.Ce qui va reset l'utilisateur et on pourra a nouveau se connecter.
+- Si l'utilisateur est connecté en tant que user il peut :
+  - Voir la liste des assignments
+  - Voir les détails d'un assignment en cliquant dessus
+  - Ajouter un assignment, 
+  - Modifier un assignment
+  - Se déconnecter
 
-- Pour ajouter un devoir il faut également etre connecter en tant que admin.
-- Pour revenir à la page d'accueil il faut cliquer sur le titre "Mon Assignment app" en haur de la page.
+Pour pouvoir acceder au contenue des assignments il faut etre connecté.
