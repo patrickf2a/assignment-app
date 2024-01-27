@@ -16,7 +16,7 @@ export class AuthService {
   loggedInUser: boolean | null = null;
   loggedInUserLog = new Subject<boolean>();
 
-  url= "http://localhost:8010/api/user/authenticate";
+  url= "http://localhost:8010/api/users";
 
   user!:User;
   admin=false;
