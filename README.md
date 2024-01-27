@@ -9,6 +9,10 @@
 
 FERNANDES DE FARIA Patrick et BRANDI Julien
 
+## Description du projet
+
+Ce projet est une application web permettant de gérer des devoirs d'étudiants. Elle permet de créer, modifier, supprimer et lister des devoirs. Elle permet également de se connecter à un compte utilisateur.
+
 ## Guide d'utilisation :
 
 ## Apercu de l'application apres lancement :
