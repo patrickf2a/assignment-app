@@ -2,8 +2,8 @@
 
 ## Liens du Projet
 
-Backend GitHub: https://github.com/patrickf2a/Projet-Angular
-Frontend en ligne: https://fernandes-brandi-application-front.onrender.com
+- Backend GitHub: https://github.com/patrickf2a/Projet-Angular
+- Frontend en ligne: https://fernandes-brandi-application-front.onrender.com
 
 ## Auteurs 
 
