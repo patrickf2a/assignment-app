@@ -31,7 +31,6 @@ https://github.com/patrickf2a/assignment-app/assets/47286268/44f23385-af03-4ab2-
   Peupler la Base : Peuplement de la base de données avec des assignments.
   Login : Connexion au compte utilisateur.
 
-- La page d'accueil s'affiche avec une card de presentation .
 - Une toolbar est presente avec plusieurs boutons permettent la navigation entre les component : 
   - Le boutton "Home" qui renvoi vers la page principal.
   - Le boutton "Peupler la base " qui permet de peupler la base de données avec des assignments.
