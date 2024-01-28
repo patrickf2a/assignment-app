@@ -17,7 +17,7 @@ export class AuthService {
   loggedInUserLog = new Subject<boolean>();
 
   //url= "http://localhost:8010/api/users";
-  url= " https://fernandes-brandi-application.onrender.com/api/users/authenticate";
+  url= " https://fernandes-brandi-application.onrender.com/api/users";
 
   user!:User;
   admin=false;
