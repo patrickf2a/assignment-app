@@ -13,6 +13,12 @@ FERNANDES DE FARIA Patrick et BRANDI Julien
 
 Ce projet est une application web permettant de gérer des devoirs d'étudiants. Elle permet de créer, modifier, supprimer et lister des devoirs. Elle permet également de se connecter à un compte utilisateur.
 
+## Video de Démonstration : 
+
+
+https://github.com/patrickf2a/assignment-app/assets/47286268/b2e5ba14-9b4b-4ea0-bdbb-1f0e153404a6
+
+
 ## Guide d'utilisation :
 
 ## Apercu de l'application apres lancement :
