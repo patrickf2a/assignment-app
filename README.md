@@ -16,7 +16,9 @@ Ce projet est une application web permettant de gérer des devoirs d'étudiants.
 ## Video de Démonstration : 
 
 
-https://github.com/patrickf2a/assignment-app/assets/47286268/b2e5ba14-9b4b-4ea0-bdbb-1f0e153404a6
+
+https://github.com/patrickf2a/assignment-app/assets/47286268/44f23385-af03-4ab2-bc8e-d81eae468ddc
+
 
 
 ## Guide d'utilisation :
