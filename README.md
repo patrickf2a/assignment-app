@@ -40,16 +40,16 @@ Remarques : quand on veut peupler la base l'hebergeur render restreint le peuple
 
 ## Navigation entre les components :
 
--Page Principale : Liste des assignments accessible via le bouton "Home".
--Liste des Assignments : Affichage dans une table comprenant le titre, la matière (avec photo), la photo du professeur, la date de rendu, la note et les remarques.
+- Page Principale : Liste des assignments accessible via le bouton "Home".
+- Liste des Assignments : Affichage dans une table comprenant le titre, la matière (avec photo), la photo du professeur, la date de rendu, la note et les remarques.
 
 ## Ajout et Gestion : 
 
 - Un Bouton "Ajouter un devoir" permet d'ajouter un devoir a l'aide d'un formulaire stepper.
 - Un bouton " filtres" qui permet de selectionner les assignments rendus ou non rendus.
 - Un champ de recherche permet de rechercher un assignment par son titre.
-- Un bouton "Premiere page" qui permet de revenir a la premiere page de la liste des assignments.
-- Un bouton "Derniere page" qui permet d'aller a la derniere page de la liste des assignments.
+- Un bouton "Premiere page" qui permet de revenir à la premiere page de la liste des assignments.
+- Un bouton "Derniere page" qui permet d'aller à la derniere page de la liste des assignments.
 - Il est également possible de choisir le nombre d'assignments par page.
 - Des boutons ">" et "<" permettent de naviguer entre les pages.
 
@@ -111,7 +111,7 @@ Remarque : La connexion est requise pour accéder au contenu des assignments.
 
 ## Ajout d'un assignment
 
-- Formulaire de création d'un assignment accessible via le bouton "Ajouter un devoir".
+- Formulaire Stepper de création d'un assignment accessible via le bouton "Ajouter un devoir".
 - Informations à fournir : Nom du devoir,Nom de l'élève, matière, photo du professeur, date de rendu, note et remarques.
 - Possibilité de choisir une date de rendu grâce à un calendrier.
 
