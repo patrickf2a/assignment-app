@@ -13,6 +13,8 @@ FERNANDES DE FARIA Patrick et BRANDI Julien
 
 Ce projet est une application web permettant de gérer des devoirs d'étudiants. Elle permet de créer, modifier, supprimer et lister des devoirs. Elle permet également de se connecter à un compte utilisateur.
 
+Remarques : Quand on lance le projet, il se peut qu'il faille attendre un peu le temps que le serveur se mette en route, car sur Render, s'il y a une période d'inactivité, le serveur est mis en pause. Le temps d'attente maximum est de 1 minute.
+
 ## Video de Démonstration : 
 
 
@@ -36,7 +38,6 @@ https://github.com/patrickf2a/assignment-app/assets/47286268/44f23385-af03-4ab2-
   - Le boutton "Peupler la base " qui permet de peupler la base de données avec des assignments.
   - Le boutton "Login" qui permet de se connecter a un compte utilisateur.
 
-Remarques : quand on veut peupler la base l'hebergeur render restreint le peuplement de la base alors que notre fichier data.ts contient bien 1000 assignments.Il ajoute environ 500 voir des fois les 1000. 
 
 ## Navigation entre les components :
 
